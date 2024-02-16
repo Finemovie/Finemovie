@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(myhead, mymain)">
+<head>
+	<meta charset="UTF-8">
+	<title>Finemovie</title>
+
+	<!-- 부트스트랩 css 사용 -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!--  부트스트랩 js 사용 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+	
+	
+	
+	
+	<th:block th:replace="${myhead}"></th:block>
+</head>
+<body>
+	
+	<th:block th:replace="~{layout/header::header}">페이지마다 적용될 헤더</th:block>
+	
+	<th:block th:replace="${mymain}"></th:block>
+	
+	<th:block th:replace="~{layout/footer::footer}" >footer섹션 적용</th:block>
+</body>
+
+
+</html>
