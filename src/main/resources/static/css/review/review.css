@@ -1,1 +1,7 @@
 @charset "UTF-8";
+
+.navbar-divider {
+  color: #666;  /* Adjust to your desired shade of light black */
+  margin: 0 16px 0 0; /* Add spacing on either side of the divider */
+}
+
