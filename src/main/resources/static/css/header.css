@@ -11,3 +11,11 @@
 	margin-bottom: 0;
 	
 }
+
+#navbarNavDropdown{
+	
+	display: flex;
+	justify-content: space-between;
+}
+
+
