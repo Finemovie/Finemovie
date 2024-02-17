@@ -1,7 +1,84 @@
-@charset "UTF-8";
-
-.navbar-divider {
-  color: #666;  /* Adjust to your desired shade of light black */
-  margin: 0 16px 0 0; /* Add spacing on either side of the divider */
+	@charset "UTF-8";
+	
+	.navbar-divider {
+	  color: #666;  /* Adjust to your desired shade of light black */
+	  margin: 0 16px 0 0; /* Add spacing on either side of the divider */
+	}
+	
+.slider {
+    width: 100%; /* 부모 요소에 꽉 차도록 */
+    height: 853px; /* 높이는 유지 */
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
+ul.imgs {
+    padding: 0;
+    margin: 0;
+    width: 400%; /* 이미지 수에 따라 조정 */
+    display: flex;
+    transition: transform 1s ease;
+}
+
+ul.imgs li {
+    list-style: none;
+    width: 25%; /* 이미지 수에 따라 조정 */
+}
+
+ul.imgs li img {
+    width: 100%; /* 이미지가 부모 요소에 꽉 차도록 */
+    height: 100%; /* 이미지가 부모 요소에 꽉 차도록 */
+    object-fit: cover; /* 원본 비율을 유지하면서 부모 요소 내에 꽉 차도록 */
+}
+	
+	.bullets {
+	    position: absolute;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    bottom: 20px;
+	    z-index: 2;
+	}
+	
+	.bullets label {
+	    display: inline-block;
+	    border-radius: 50%;
+	    background-color: rgba(0, 0, 0, 0.55);
+	    width: 20px;
+	    height: 20px;
+	    cursor: pointer;
+	    margin-right: 5px;
+	}
+	
+	.bullets label:hover {
+	    background-color: #fff;
+	}
+	
+	input[type="radio"] {
+	    display: none;
+	}
+	
+	input[type="radio"]:checked ~ .imgs {
+	    transform: translateX(-25%); /* 이미지 수에 따라 조정 */
+	}
+	
+	
+	
+	
+#imgSlider {
+	
+	 padding-top: 0 !important;
+	    padding-bottom: 0 !important;
+
+    background-color: white !important;
+    
+}
+
+
+
+.userhead{
+	
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
