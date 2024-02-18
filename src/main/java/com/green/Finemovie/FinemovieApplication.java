@@ -1,4 +1,4 @@
-package com.green.Finemove;
+package com.green.Finemovie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
