@@ -30,7 +30,7 @@ button{
 }
 
 .content_free_add{
-	width: 530px;
+	width: 550px;
 	margin-bottom: 40px;
 }
 
@@ -61,6 +61,7 @@ input{
 	align-items: center;
 	background-color: #98ABBE;
 	border-bottom: 1px solid #d0d0d0;
+	border-radius: 6px 0 0 0;
 }
 
 .password{
@@ -94,7 +95,7 @@ input{
 }
 
 .title_name{
-	width: 75px; height: 50px;
+	width: 80px; height: 50px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -109,7 +110,7 @@ input{
 }
 
 .input_txt_title{
-	width: 439px;
+	width: 445px;
 	padding: 13px 0 13px 0;
 	font-size: 15px;
 	border-bottom: 1px solid #d0d0d0;
@@ -132,11 +133,12 @@ input{
 }
 
 .content_name{
-	width: 75px; height: 250px;
+	width: 80px; height: 250px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #98ABBE;
+	border-radius: 0 0 0 6px;
 }
 
 .content_item{
@@ -144,6 +146,7 @@ input{
 }
 
 .freeContent{
+	padding-left: 5px;
 	width: 445px; height: 243px;
 	resize: none;
 	outline: none;
