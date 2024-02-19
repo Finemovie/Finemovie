@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>자유게시판</title>
+<link rel="shortcut icon" type="image/x-icon" href="/img/imageicon.svg">
+	<!-- 부트스트랩 css 사용 -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!--  부트스트랩 js 사용 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	
+	<link rel="stylesheet" href="/css/free/freeList.css">
+	
+	<link rel="stylesheet" href="/css/layout/common.css">
+	<link rel="stylesheet" href="/css/layout/header.css">
+	
+	
+	<!--google font-->
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+<th:block th:replace="~{layout/header::header}">페이지마다 적용될 헤더</th:block>
+</head>
+<body>
+<main>
+	
+</main>
+<th:block th:replace="~{layout/footer::footer}" >footer섹션 적용</th:block>
+</body>
+</html>
