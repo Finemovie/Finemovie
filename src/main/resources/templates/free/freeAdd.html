@@ -42,20 +42,20 @@
 								<!--<a sec:authentication="principal.Name">이름</a>-->
 								<div class="password">비밀번호</div>
 								<div class="title_item">
-									<input type="text" placeholder="비밀번호를 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력해주세요.', validatePassword();" oninput="" autocomplete="off" class="input_txt" name="password" >
+									<input type="password"  maxlength='8' placeholder="8자리 비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '8자리 비밀번호를 입력하세요', validatePassword()" autocomplete="off" class="input_txt" name="password">
 								</div>
 							</th:block>
 						</div>
 						<div class="content_title">
 							<div class="title_name">제목</div>
 							<div class="title_item">
-								<input type="text" placeholder="제목을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '제목을 입력해주세요.', validateFreeTitle();" oninput="" autocomplete="off" class="input_txt_title" name="freeTitle">
+								<input type="text" placeholder="제목을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '제목을 입력해주세요.', validateFreeTitle();" oninput="" autocomplete="off" class="input_txt_title" name="title">
 							</div>
 						</div>
 						<div class="content_text">
 							<div class="content_name">내용</div>
 							<div class="content_item">
-								<textarea type="text" placeholder="영화를 주제로 자유롭게 글을 작성해주세요. 타인이 불쾌감을 느낄 수 있는 글은 삭제될 수 있습니다." onfocus="this.placeholder = ''"  onblur="this.placeholder = '영화를 주제로 자유롭게 글을 작성해주세요. 타인이 불쾌감을 느낄 수 있는 글은 삭제될 수 있습니다.', validateFreeContent();" autocomplete="off" class="freeContent" name="freeContent"></textarea>
+								<textarea type="text" placeholder="영화를 주제로 자유롭게 글을 작성해주세요. 타인이 불쾌감을 느낄 수 있는 글은 삭제될 수 있습니다." onfocus="this.placeholder = ''"  onblur="this.placeholder = '영화를 주제로 자유롭게 글을 작성해주세요. 타인이 불쾌감을 느낄 수 있는 글은 삭제될 수 있습니다.', validateFreeContent();" autocomplete="off" class="freeContent" name="content"></textarea>
 							</div>
 						</div>
 					</div>
