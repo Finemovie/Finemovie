@@ -11,7 +11,9 @@
   
 	<select id="findAll" resultType="com.green.Finemovie.domain.dto.ReviewDTO"> <!--조회할 개수가 여러개인 경우 resultType 정의해주어야한다.-->
 		select * from review
- 		order by no desc
+	    WHERE no > 0 AND title LIKE CONCAT('%', #{search}, '%')
+	    order by no desc
+	    LIMIT #{offset}, #{limit}
 	</select>
 	
 	<select id="countAllSearch" resultType="int">
