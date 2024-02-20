@@ -18,8 +18,3 @@
 	justify-content: space-between;
 	
 }
-
-body > header > nav:nth-child(2){
-	
-	box-shadow: 1px 1px 3px 1px #666;
-}

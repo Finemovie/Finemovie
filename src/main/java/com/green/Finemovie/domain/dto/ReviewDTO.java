@@ -1,6 +1,6 @@
 package com.green.Finemovie.domain.dto;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import lombok.Builder;
 
@@ -13,7 +13,7 @@ public class ReviewDTO {
 	private String writer;
 	private int count;
 	private int grade;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 	
 }
