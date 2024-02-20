@@ -1,6 +1,5 @@
 package com.green.Finemovie.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -35,6 +34,8 @@ public class ReviewProcess implements ReviewService {
 		
 		int rowCount = reviewMapper.countAllSearch(search);
 		
+		PageData pageData = PageData.create(page, limit, rowCount);
+		
 		if(rowCount <=0) {
 			page=1;
 			rowCount=0;
@@ -48,10 +49,10 @@ public class ReviewProcess implements ReviewService {
 		
 
 		List<ReviewDTO> reviewList = reviewMapper.findAll(search, offset, limit);
+		pageData.setData(reviewList);
+		
 
-		PageData pageData = PageData.create(page, limit, rowCount);
-
-		return reviewList;
+		return reviewMapper.findAll(search, offset, limit);
 		
 	}
 	

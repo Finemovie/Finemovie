@@ -1,6 +1,10 @@
 package templates.utils;
 
 
+import java.util.List;
+
+import com.green.Finemovie.domain.dto.ReviewDTO;
+
 import lombok.Getter;
 
 @Getter
@@ -59,5 +63,10 @@ public class PageData {
 	
 	private PageData(int page,  int limit, int rowCount){
 		this(page, limit, rowCount, 10);	
+	}
+
+	public void setData(List<ReviewDTO> reviewList) {
+		// TODO Auto-generated method stub
+		
 	}
 }
