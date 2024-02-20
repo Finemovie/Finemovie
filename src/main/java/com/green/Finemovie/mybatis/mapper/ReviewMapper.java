@@ -3,6 +3,7 @@ package com.green.Finemovie.mybatis.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.green.Finemovie.domain.dto.ReviewDTO;
 
@@ -15,8 +16,8 @@ public interface ReviewMapper {
 	
 	void save(ReviewDTO reviewDTO);
 	
-	List<ReviewDTO> findAll();
+	List<ReviewDTO> findAll(@Param("search") String search, @Param("offset") int offset,@Param("limit") int limit);
 	
-	
+	int countAllSearch(String search);
 
 }
