@@ -1,4 +1,4 @@
-package com.green.Finemovie.domain.entity;
+package com.green.Finemovie.domain.entity.notice;
 
 import java.time.LocalDate;
 

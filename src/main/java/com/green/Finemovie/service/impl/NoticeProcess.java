@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.green.Finemovie.domain.entity.NoticeEntity;
 import com.green.Finemovie.domain.dto.notice.NoticeListDTO;
 import com.green.Finemovie.domain.dto.notice.NoticeSaveDTO;
-import com.green.Finemovie.domain.entity.NoticeRepository;
+import com.green.Finemovie.domain.entity.notice.NoticeEntity;
+import com.green.Finemovie.domain.entity.notice.NoticeRepository;
 import com.green.Finemovie.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;

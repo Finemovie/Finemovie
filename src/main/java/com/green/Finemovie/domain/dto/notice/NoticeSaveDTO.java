@@ -1,7 +1,7 @@
 package com.green.Finemovie.domain.dto.notice;
 
-import com.green.Finemovie.domain.entity.NoticeEntity;
-import com.green.Finemovie.domain.entity.NoticeRepository;
+import com.green.Finemovie.domain.entity.notice.NoticeEntity;
+import com.green.Finemovie.domain.entity.notice.NoticeRepository;
 
 public class NoticeSaveDTO {
 	
