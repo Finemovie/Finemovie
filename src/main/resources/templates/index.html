@@ -1,31 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
-	
-	
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-		
-		<!-- 부트스트랩 css 사용 -->
-		<link rel="stylesheet" href="/css/bootstrap.css">
-		<!--  부트스트랩 js 사용 -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.js"></script>
-		
-		
-	</head>
-	
-	
-	<body>
-		<main>
-		
-		
-	
-		
-		
-	
-		
-		</main>
-	</body>
+<head>
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/index/index.css">
+<script defer src="/js/index.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+</head>
+
+<body>
+	<main>
+		<section id="slider1" class="slider">
+			<div class="box">
+				<img src="/img/index/banner.png" width="1200px" height="200px">
+			</div>
+		</section>
+		<div class="board">
+			<div class="row mb-4">
+				<div class="col-md-6">
+					<div class="int aa d-flex justify-content-between">
+						<div>
+							<span>영화 소개</span>
+						</div>
+						<div>
+							<a class="link" href="">+자세히 보기</a>
+						</div>
+					</div>
+					<hr>
+				</div>
+				<div class="col-md-6">
+					<div class="review aa d-flex justify-content-between">
+						<div>
+							<span>영화 리뷰</span>
+						</div>
+						<div>
+							<a class="link" href="">+자세히 보기</a>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+			<div class="row mb-4">
+				<div class="col-md-6">
+					<div class="community aa d-flex justify-content-between">
+						<div>
+							<span>자유게시판</span>
+						</div>
+						<div>
+							<a class="link" href="">+자세히 보기</a>
+						</div>
+					</div>
+					<hr>
+				</div>
+				<div class="col-md-6">
+					<div class="info aa d-flex justify-content-between">
+						<div>
+							<span>공지사항</span>
+						</div>
+						<div>
+							<a class="link" href="">+자세히 보기</a>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
 </html>

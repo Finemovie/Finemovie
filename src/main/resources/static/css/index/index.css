@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.aa {
+	display: flex;
+	align-content: space-between;
+}
+
+.board {
+	margin-top: 30px;
+}
+
+.link {
+	text-decoration-line: none;
+	text-decoration-color: black;
+}

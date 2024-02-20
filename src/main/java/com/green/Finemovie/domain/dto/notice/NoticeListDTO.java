@@ -1,0 +1,15 @@
+package com.green.Finemovie.domain.dto.notice;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Builder
+@Getter
+public class NoticeListDTO {
+	
+	private Long id;
+	
+	private String title;
+	private String content;
+
+}
