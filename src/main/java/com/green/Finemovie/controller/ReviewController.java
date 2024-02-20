@@ -4,19 +4,21 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.Finemovie.domain.dto.ReviewDTO;
-import com.green.Finemovie.mybatis.mapper.ReviewMapper;
+import com.green.Finemovie.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
+
+
 
 @RequiredArgsConstructor
 @Controller
 public class ReviewController {
 	
 	
-	private final ReviewMapper reviewMapper;
+	private final ReviewService reviewService;
 	
 	@GetMapping("/reviewHome")
 	public String reviewHome() {
@@ -24,27 +26,28 @@ public class ReviewController {
 		return "review/reviewHome";
 	}
 	
-	 @GetMapping("/reviewBoard")
-	    public String reviewBoard() {
-	        return "review/reviewBoard"; 
-	    } 
 
-	 @GetMapping("/reviewBoardData") // Data-fetching endpoint
-	 @ResponseBody 
-	 public List<ReviewDTO> getReviewBoardData() {
-		 
-	      return reviewMapper.findAll();
-	    }
+
 	
-	
+	@GetMapping("/reviewBoard")
+	public List<ReviewDTO> reviewBoard(
+				@RequestParam(name = "page", defaultValue = "1") int page,
+				@RequestParam(name = "search",defaultValue = "",required = false) String search
+			) {
+		
+        return reviewService.listProcess(page,search);  // Create a ResponseEntity
+	}
+
+
+
 	
 	@GetMapping("/reviewPro")
 	public String reviewPro() {
 		
 		return "review/reviewPro";
-		
+
 	}
-	
+
 	
 	@GetMapping("/reviewLike")
 	public String reviewLike() {
