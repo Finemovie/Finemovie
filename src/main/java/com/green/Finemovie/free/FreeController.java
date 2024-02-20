@@ -21,19 +21,19 @@ public class FreeController {
 	}
 	
 	//자유게시글 리스트 페이지 이동
-	@GetMapping("/freeDetail")
-	public String freeDetail() {
-		return "/free/freeDetail";
+	@GetMapping("/freeDetails")
+	public String freeDetails() {
+		return "/free/freeDetails";
 	}
 
 	
-	// 자유게시글 상세 정보 조회 및 처리
+	/*// 자유게시글 상세 정보 조회 및 처리
     @GetMapping("/freeDetail/{id}")
     public String getFreeDetail(@PathVariable Long id, Model model) {
     // 상세 정보 조회 로직
     // FreeEntity freeEntity = freeService.getFreeEntityById(id);
     // model.addAttribute("freeEntity", freeEntity);
     return "free/freeDetail";
-    }
+    }*/
 	
 }

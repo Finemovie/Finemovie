@@ -1,10 +1,109 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자유게시글 등록 페이지</title>
+<link rel="shortcut icon" type="image/x-icon" href="/img/imageicon.svg">
+	<!-- 부트스트랩 css 사용 -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!--  부트스트랩 js 사용 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	
+	<link rel="stylesheet" href="/css/free/freeDetails.css">
+	
+	<link rel="stylesheet" href="/css/layout/common.css">
+	<link rel="stylesheet" href="/css/layout/header.css">
 </head>
 <body>
-
+<main>
+	<div class="container_free_details">
+		<div class="btn_place">
+			<p class="edit"><button type="button" class="edit_button" onclick="toggleEditMode(this)">수정</button></p>
+			<p class="edit"><button type="button" name="selectedStudents" class="selectedStudents">삭제</button></p>
+		</div>
+		<div class="page_content">
+			<div class="content_free_details">
+				<form name="freeDetailsForm" action="/freeDetails" method="post" onsubmit="return validateAndSubmit()">
+					<div class="main_area">
+						<div class="content_title">
+							<div class="title_name">제목</div>
+							<div class="title_item">
+								<!--<input type="text" class="input_txt" id="title" name="title" th:value="${freeBoard.title}" readonly>-->
+								<input type="text" class="input_txt_title" id="title" name="title" value="테스트입니다" readonly>
+							</div>
+						</div>
+						<div class="write_user">
+							<div class="writer">작성자</div>
+							<div class="title_item">
+								<!--<input type="text" class="input_txt" id="writer" name="writer" th:value="${freeBoard.writer}" readonly>-->
+								<input type="text" class="input_txt" id="writer" name="writer" value="홍길동" readonly>
+							</div>
+						</div>
+						<div class="content_text">
+							<div class="content_name">내용</div>
+							<div class="content_item">
+								<!--<textarea type="text" class="input_txt" id="content" name="content" readonly>${freeBoard.content}</textarea>-->
+								<textarea type="text" class="content" id="content" name="content" readonly>헬로월드</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="btn_area">
+						<div class="update_btn_box" style="display: none;">
+							<input type="submit" value="수정 하기" class="update_box"></input>
+						</div>	
+						<div class="cancel_btn_box" style="display: none;">
+							<a href="/freeDetails"><input type="button" value="취소" class="cancel_box"></input></a>
+						</div>
+					</div>
+				</form>
+				<div class="comment_area">
+					<div class="page_title">
+						Comment
+					</div>
+					<div class="comment_list">
+						<div class="comment_content_list">
+							<div class="name_comment">
+								<!--<input type="text" class="input_txt" id="writer" name="writer" th:value="${freeBoard.writer}" readonly>-->
+								<div type="text" class="comment_writer_name" id="comment_writer" name="comment_writer" readonly>홍길동</div>
+							
+								<!--<div type="text" class="comment_content" id="content" name="content" readonly>${freeBoard.content}</div>-->
+								<div type="text" class="comment_b" id="comment" name="comment" readonly>헬로월드</div>
+							</div>
+							<!--<div class="comment_createdDate" th:text="${comment.createdDate}"></div>-->
+							<div class="comment_createdDate">2024-02-20</div>
+						</div>
+					</div>
+					<form>
+						<div class="comment_add">
+							<div class="comment_info">
+								<div class="writer_area">
+									<div class="writer_title">작성자</div>
+									<div class="writer_input">
+										<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.', validateCommentWriter();" oninput="" autocomplete="off" class="comment_writer" name="comment_writer">
+									</div>
+								</div>	
+								<div class="pass_area">	
+									<div class="pass_title">비밀번호</div>
+									<div class="password_input">
+										<input type="password"  maxlength='8' placeholder="8자리 비밀번호 입력." onfocus="this.placeholder = ''" onblur="this.placeholder = '8자리 비밀번호를 입력.', validateCommentPassword()" autocomplete="off" class="comment_password" name="comment_password">
+									</div>
+								</div>	
+							</div>
+							<div class="comment_content">
+								<textarea type="text" placeholder="댓글을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '댓글을 입력해주세요.', validateComment();" oninput="" autocomplete="off" class="comment" name="comment"></textarea>
+								<div class="comment_btn_box">
+									<input type="submit" value="댓글 작성" class="comment_upload"></input>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<th:block th:replace="~{layout/footer::footer}" >footer섹션 적용</th:block>
 </body>
 </html>

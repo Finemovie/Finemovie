@@ -30,7 +30,7 @@ button{
 }
 
 .content_free_add{
-	width: 550px;
+	width: 590px;
 	margin-bottom: 40px;
 }
 
@@ -110,7 +110,7 @@ input{
 }
 
 .input_txt_title{
-	width: 445px;
+	width: 494px;
 	padding: 13px 0 13px 0;
 	font-size: 15px;
 	border-bottom: 1px solid #d0d0d0;
@@ -141,11 +141,7 @@ input{
 	border-radius: 0 0 0 6px;
 }
 
-.content_item{
-	
-}
-
-.freeContent{
+.content{
 	padding-left: 5px;
 	width: 445px; height: 243px;
 	resize: none;
