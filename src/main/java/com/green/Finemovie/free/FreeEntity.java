@@ -1,5 +1,10 @@
 package com.green.Finemovie.free;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,5 +43,19 @@ public class FreeEntity {
 	
 	@Column(nullable = false)
 	private String content;
+	
+	@Column(nullable = false)
+	private int viewCount;
+	
+	@CreationTimestamp
+	@Column(columnDefinition = "timestamp(6) null" , nullable = false, updatable = false)
+    private LocalDateTime createdDate;
+
+    @UpdateTimestamp
+    @Column(columnDefinition = "timestamp(6) null")
+    private LocalDateTime updatedDate;
+    
+    @Column(columnDefinition = "CHAR(1) null default 'N'")
+	private Character cancel;
 	
 }

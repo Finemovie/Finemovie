@@ -14,13 +14,6 @@
 	
 	<link rel="stylesheet" href="/css/layout/common.css">
 	<link rel="stylesheet" href="/css/layout/header.css">
-	
-	
-	<!--google font-->
-	
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
 <th:block th:replace="~{layout/header::header}">페이지마다 적용될 헤더</th:block>
 </head>
 <body>
@@ -34,17 +27,17 @@
 				<form name="freeAddForm" action="/freeAdd" method="post" onsubmit="return validateAndSubmit()">
 					<div class="main_area">
 						<div class="write_user">
-							<th:block sec:authorize="isAuthenticated()">
-								<div class="writer">작성자</div>
-								<div class="title_item">
-									<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.', validatewriter();" oninput="" autocomplete="off" class="input_txt" name="writer">
-								</div>
-								<!--<a sec:authentication="principal.Name">이름</a>-->
-								<div class="password">비밀번호</div>
-								<div class="title_item">
-									<input type="password"  maxlength='8' placeholder="8자리 비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '8자리 비밀번호를 입력하세요', validatePassword()" autocomplete="off" class="input_txt" name="password">
-								</div>
-							</th:block>
+							<!--<th:block sec:authorize="isAuthenticated()">
+								<a sec:authentication="principal.Name">이름</a>
+							</th:block>-->
+							<div class="writer">작성자</div>
+							<div class="title_item">
+								<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.', validatewriter();" oninput="" autocomplete="off" class="input_txt" name="writer">
+							</div>
+							<div class="password">비밀번호</div>
+							<div class="title_item">
+								<input type="password"  maxlength='8' placeholder="8자리 비밀번호 입력." onfocus="this.placeholder = ''" onblur="this.placeholder = '8자리 비밀번호를 입력.', validatePassword()" autocomplete="off" class="input_txt" name="password">
+							</div>
 						</div>
 						<div class="content_title">
 							<div class="title_name">제목</div>
