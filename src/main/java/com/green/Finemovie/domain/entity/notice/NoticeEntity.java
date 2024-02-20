@@ -1,11 +1,12 @@
 package com.green.Finemovie.domain.entity.notice;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import com.green.Finemovie.domain.dto.notice.NoticeListDTO;
+import com.green.Finemovie.service.NoticeUpdateDTO;
+import com.green.Finemovie.domain.dto.notice.NoticeEditDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,18 +29,31 @@ public class NoticeEntity {
 	 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long no;
 
     private String title;
     private String content;
     
     @CreationTimestamp
     @Column(columnDefinition = "timestamp(6) null")
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     public NoticeListDTO toNoticeListDTO() {
     	return NoticeListDTO.builder()
-    			.id(id).title(title).content(content)
+    			.id(no).title(title).content(content).createdAt(createdAt)
     			.build();
     }
+
+	public NoticeEditDTO toNoticeEditDTO() {
+		return NoticeEditDTO.builder()
+			.no(no)
+			.title(title)
+			.content(content)
+			.build();
+	}
+	
+	public void updateNotice(NoticeUpdateDTO dto) {
+		this.title = dto.getTitle();
+		this.content = dto.getContent();
+	}
 }

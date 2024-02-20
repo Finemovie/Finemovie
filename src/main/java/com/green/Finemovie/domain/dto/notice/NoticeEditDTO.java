@@ -1,22 +1,25 @@
 package com.green.Finemovie.domain.dto.notice;
 
 import com.green.Finemovie.domain.entity.notice.NoticeEntity;
-import com.green.Finemovie.domain.entity.notice.NoticeRepository;
 
+import lombok.Builder;
+import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Builder
 @Setter
-public class NoticeSaveDTO {
+public class NoticeEditDTO {
 	
+	private Long no;
 	private String title;
 	private String content;
 	
-	public NoticeEntity toEntity(NoticeRepository noticeRepository) {
-		
+	public NoticeEntity toEntity() {
 		return NoticeEntity.builder()
-				.title(title).content(content)
+				.no(no)
+				.title(title)
+				.content(content)
 				.build();
-		
 	}
-
 }
