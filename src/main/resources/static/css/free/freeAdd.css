@@ -11,7 +11,6 @@ button{
 
 .container_free_add{
 	box-sizing: border-box; user-select: none !important;
-	height: auto;
 }
 
 .page_title{
@@ -133,7 +132,7 @@ input{
 }
 
 .content_name{
-	width: 80px; height: 250px;
+	width: 80px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -142,10 +141,12 @@ input{
 }
 
 .content{
-	padding-left: 5px;
-	width: 445px; height: 243px;
+	padding: 5px 0px 0px 8px;
+	width: 500px;
+	min-height: 250px;
 	resize: none;
 	outline: none;
+	overflow-y: auto;
 }
 
 /************************************************************/

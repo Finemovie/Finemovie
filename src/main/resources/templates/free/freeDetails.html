@@ -11,6 +11,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	
+	<script src="/js/free/freeDetails.js"></script>
+	
 	<link rel="stylesheet" href="/css/free/freeDetails.css">
 	
 	<link rel="stylesheet" href="/css/layout/common.css">
@@ -30,22 +32,23 @@
 						<div class="content_title">
 							<div class="title_name">제목</div>
 							<div class="title_item">
-								<!--<input type="text" class="input_txt" id="title" name="title" th:value="${freeBoard.title}" readonly>-->
-								<input type="text" class="input_txt_title" id="title" name="title" value="테스트입니다" readonly>
+								<input type="text" class="input_txt_title" id="title" name="title" th:value="${freeDetails.title}" readonly>
 							</div>
 						</div>
 						<div class="write_user">
 							<div class="writer">작성자</div>
 							<div class="title_item">
-								<!--<input type="text" class="input_txt" id="writer" name="writer" th:value="${freeBoard.writer}" readonly>-->
-								<input type="text" class="input_txt" id="writer" name="writer" value="홍길동" readonly>
+								<input type="text" class="input_txt" id="writer" name="writer" th:value="${freeDetails.writer}" readonly>
 							</div>
+							<div class="date_name">작성일</div>
+							<div class="title_item">
+	                            <input class="input_txt_date" th:value="${#temporals.format(freeDetails.createdDate, 'yyyy-MM-dd HH:mm')}" readonly></input>
+	                        </div>
 						</div>
 						<div class="content_text">
 							<div class="content_name">내용</div>
 							<div class="content_item">
-								<!--<textarea type="text" class="input_txt" id="content" name="content" readonly>${freeBoard.content}</textarea>-->
-								<textarea type="text" class="content" id="content" name="content" readonly>헬로월드</textarea>
+								<textarea class="content" id="content" name="content" oninput="autoResize()" th:text="${freeDetails.content}" readonly></textarea>
 							</div>
 						</div>
 					</div>

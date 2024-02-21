@@ -1,5 +1,18 @@
 package com.green.Finemovie.free;
 
-public class FreeService {
+import java.util.List;
+
+import org.springframework.ui.Model;
+
+
+public interface FreeService {
+
+	void saveFree(FreeDTO dto);
+	
+	List<FreeEntity> getAllFrees(Model model);
+
+	void listFree(int page, Model model, String keyword);
+
+	FreeEntity getFreeById(long freeNo);
 
 }

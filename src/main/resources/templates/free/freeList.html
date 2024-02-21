@@ -11,6 +11,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	
+	<script src="/js/free/freeList.js"></script>
+	
 	<link rel="stylesheet" href="/css/free/freeList.css">
 	
 	<link rel="stylesheet" href="/css/layout/common.css">
@@ -26,7 +28,7 @@
 			<div class="content_free_list">
 				<div class="free_console">
 					<div class="search_box">
-						<form th:action="@{/freeBoard}" method="get">
+						<form th:action="@{/freeList}" method="get">
 							<input type="search" placeholder="검색어를 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '검색어를 입력하세요'" autocomplete="off" class="input_search" name="search">
 							<button type="submit" class="search_button">검색</button>
 						</form>
@@ -34,37 +36,37 @@
 					<a href="/freeAdd" class="fr_button">게시글 작성</a>
 				</div>
 				<div class="main_area">
-					<div class="free_bar">|  <p class="freeNo_list">번호</p>  |  <p class="freeTitle_list">제목</p>  |  <p class="writer_list">작성자</p>  |  <p class="createdDate_list">작성일</p>  |  <p class="viewCount_list">조회수</p>  |</div>
-					<div class="free_data" th:each="freeBoard : ${list}"> <!-- 과정 정보 반복 출력 -->
-						<a th:href="@{'/freeDetail/' + ${freeBoard.freeNo}}">
-					        <div class="freeNo" th:text="${freeBoard.freeNo}"></div>
-					        <div class="freeTitle" th:text="${freeBoard.freeTitle}"></div>
-					        <div class="writer" th:text="${freeBoard.writer}"></div>
-					        <div class="createdDate" th:text="${freeBoard.createdDate}"></div>
-					        <div class="viewCount" th:text="${freeBoard.viewCount}"></div>
+					<div class="free_bar"><p class="freeNo_list">번호</p><p class="freeTitle_list">제목</p><p class="writer_list">작성자</p><p class="createdDate_list">작성일</p><p class="viewCount_list">조회수</p></div>
+					<div class="free_data" th:each="freeList : ${list}"> <!-- 과정 정보 반복 출력 -->
+						<a th:href="@{'/freeDetails/' + ${freeList.freeNo}}" class="free_data_a">
+					        <div class="freeNo" th:text="${freeList.freeNo}"></div>
+					        <div class="freeTitle" th:text="${freeList.title}"></div>
+					        <div class="writer" th:text="${freeList.writer}"></div>
+					        <div class="createdDate" th:text="${#temporals.format(freeList.createdDate, 'yyyy-MM-dd HH:mm')}"></div>
+					        <div class="viewCount" th:text="${freeList.viewCount}"></div>
 					    </a>
 					</div>
 				</div>
-				<!--<div class="freeBoard_page_button">  페이지네이션 
+				<div class="freeList_page_button"> 
 					<div class="pagging-wrap">
-						<a th:if="${pu.from > 1}" th:href="@{|/freeBoard?page=${1}&search=${keyword != null ? keyword : ''}|}">
+						<a th:if="${pu.from > 1}" th:href="@{|/freeList?page=${1}&search=${keyword != null ? keyword : ''}|}">
 				            <button class="first_page">&lt;&lt;</button>
 				        </a> 
-				        <a th:if="${pu.from > 1}" th:href="@{|/freeBoard?page=${pu.from-1}&search=${keyword != null ? keyword : ''}|}">
+				        <a th:if="${pu.from > 1}" th:href="@{|/freeList?page=${pu.from-1}&search=${keyword != null ? keyword : ''}|}">
 				            <button class="page_down">&lt;</button>
 				        </a> 
 				        <span id="pagging"> 
-				            <a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}" th:href="@{|/freeBoard?page=${pno}&search=${keyword != null ? keyword : ''}|}">
+				            <a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}" th:href="@{|/freeList?page=${pno}&search=${keyword != null ? keyword : ''}|}">
 				                <button class="page_btn" th:text="${pno}" th:classappend="${pno == pu.page ? 'focused' : ''}"></button>
 				            </a>
 				        </span> 
-				        <a th:if="${pu.to < pu.tot}" th:href="@{|/freeBoard?page=${pu.to+1}&search=${keyword != null ? keyword : ''}|}">
+				        <a th:if="${pu.to < pu.tot}" th:href="@{|/freeList?page=${pu.to+1}&search=${keyword != null ? keyword : ''}|}">
 				            <button class="page_up">&gt;</button>
 				        </a> 
-				        <a th:href="@{|/freeBoard?page=${pu.tot}&search=${keyword != null ? keyword : ''}|}">
+				        <a th:href="@{|/freeList?page=${pu.tot}&search=${keyword != null ? keyword : ''}|}">
 				            <button class="last_page">&gt;&gt;</button>
 				        </a>
-					</div>-->
+					</div>
 				</div>
 			</div>
 		</div>

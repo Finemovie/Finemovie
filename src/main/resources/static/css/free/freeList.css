@@ -5,6 +5,10 @@
  	border: 0px solid silver;
 }
 
+p{
+	margin-bottom: 0;
+}
+
 a {
 	text-decoration-line: none;
 	color: black;
@@ -35,7 +39,7 @@ button{
 }
 
 .content_free_list{
-	width: 990px;
+	width: 1060px;
 	margin-bottom: 40px;
 }
 
@@ -119,6 +123,7 @@ input{
 }
 
 .free_bar{
+	height: 30px;
 	background-color: #98ABBE;
 	border-radius: 6px 6px 0 0;
 	display: flex;
@@ -143,7 +148,7 @@ input{
 
 .createdDate_list{
 	text-align: center;
-    width: 120px;
+    width: 200px;
 }
 
 .viewCount_list{
@@ -162,22 +167,52 @@ input{
 	outline: 0;
 }
 
+.free_data_a{
+	background-color: #F1F1F6;
+	display: flex;
+	justify-content: center;
+	padding: 10px 10px;
+	outline: 0;
+}
+
 .free_data:last-child{
 	border-radius: 0 0 6px 6px;
 }
 
-/*반복출력 css 추가*/
+.freeNo{
+	text-align: center;
+    width: 80px;
+}
+
+.freeTitle{
+	text-align: center;
+    width: 500px;
+}
+
+.writer{
+	text-align: center;
+    width: 150px;
+}
+
+.createdDate{
+	text-align: center;
+    width: 200px;
+}
+
+.viewCount{
+	text-align: center;
+    width: 80px;
+}
 
 /************************************************************/
 
-.freeBoard_page_button{
+.freeList_page_button{
 	display: flex;
 	justify-content: center;
-	padding-top: 40px;
+	padding-top: 30px;
 }
 
 .pagging-wrap{
-	width: 800px;
 	display: flex;
 	justify-content: center;
 }
