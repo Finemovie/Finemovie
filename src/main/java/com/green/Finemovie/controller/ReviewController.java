@@ -30,7 +30,7 @@ public class ReviewController {
 
 	
 	@GetMapping("/reviewBoard")
-	public List<ReviewDTO> reviewBoard(
+	public String reviewBoard(
 				@RequestParam(name = "page", defaultValue = "1") int page,
 				@RequestParam(name = "search",defaultValue = "",required = false) String search
 			) {
