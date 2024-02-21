@@ -16,7 +16,7 @@ public interface ReviewMapper {
 	
 	void save(ReviewDTO reviewDTO);
 	
-	List<ReviewDTO> findAll(@Param("search") String search, @Param("offset") int offset,@Param("limit") int limit);
+	List<ReviewDTO> findAll(@Param("search") String search, @Param("offset") int offset, @Param("limit") int limit);
 	
 	int countAllSearch(String search);
 

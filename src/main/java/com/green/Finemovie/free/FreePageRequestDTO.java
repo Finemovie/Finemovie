@@ -1,15 +1,10 @@
-package templates.utils;
-
-
-import java.util.List;
-
-import com.green.Finemovie.domain.dto.ReviewDTO;
+package com.green.Finemovie.free;
 
 import lombok.Getter;
 
 @Getter
-public class PageData {
-
+public class FreePageRequestDTO {
+	
 	private int tot;//페이지총개수
 	private int from; //출력되는 페이지 시작번호
 	private int to; //출력되는 페이지 마직막 번호
@@ -28,8 +23,8 @@ public class PageData {
 	 * @param RANGE : 표현되는 페이지번호 개수 default RANGE=10
 	 * @return from(출력되는 페이지 시작번호), to(출력되는 페이지 마직막 번호), tot(페이지 총 개수)
 	 */
-	public static PageData create(int page,  int limit, int rowCount) {
-		return new PageData(page, limit, rowCount);
+	public static FreePageRequestDTO create(int page,  int limit, int rowCount) {
+		return new FreePageRequestDTO(page, limit, rowCount);
 	}
 	
 	/**
@@ -39,11 +34,11 @@ public class PageData {
 	 * @param RANGE : 표현되는 페이지번호 개수
 	 * @return from(출력되는 페이지 시작번호), to(출력되는 페이지 마직막 번호), tot(페이지 총 개수)
 	 */
-	public static PageData create(int page,  int limit, int rowCount, int RANGE) {
-		return new PageData(page, limit, rowCount, RANGE);
+	public static FreePageRequestDTO create(int page,  int limit, int rowCount, int RANGE) {
+		return new FreePageRequestDTO(page, limit, rowCount, RANGE);
 	}
 	
-	private PageData(int page,  int limit, int rowCount, int RANGE){
+	private FreePageRequestDTO(int page,  int limit, int rowCount, int RANGE){
 		//int LIMIT=limit;// 한 페이지에 표현되는 게시글 개수
 		this.pageLimit=RANGE;// 한 페이지에 표현되는 페이지번호 개수
 		this.hasNext=rowCount > limit*page?true:false;
@@ -61,12 +56,8 @@ public class PageData {
 		if(this.to > this.tot)this.to=this.tot;
 	}
 	
-	private PageData(int page,  int limit, int rowCount){
+	private FreePageRequestDTO(int page,  int limit, int rowCount){
 		this(page, limit, rowCount, 10);	
 	}
-
-	public void setData(List<ReviewDTO> reviewList) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

@@ -1,1 +1,396 @@
 @charset "UTF-8";
+
+* {
+ 	box-sizing: border-box;
+ 	border: 0px solid silver;
+}
+
+button{
+	cursor: pointer;
+}
+
+.container_free_details{
+	margin-top: 30px;
+	box-sizing: border-box; user-select: none !important;
+	height: auto;
+}
+
+.page_content{
+	display: flex;
+	justify-content: center;
+	
+}
+
+.content_free_details{
+	margin-bottom: 40px;
+}
+
+.main_area{
+	border: 3px solid silver;
+	box-sizing: border-box;
+    border-radius: 10px;
+    background-color: white;
+}
+
+input{
+	outline: 0;
+	background: none;
+}
+
+/************************************************************/
+
+.btn_place{
+	display: flex;
+    justify-content: end;
+    width: 880px;
+}
+
+.edit_button{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    
+    background-color: white;
+}
+
+.edit_button:hover {
+	border: 1px solid #201658;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #98ABBE;
+    border-radius: 10px;
+}
+
+.selectedStudents{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 5px;
+    background-color: white;
+}
+
+.selectedStudents:hover {
+	border: 1px solid #201658;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #98ABBE;
+    border-radius: 10px;
+}
+
+/************************************************************/
+
+.write_user{
+	height: 50px;
+	display: flex;
+	align-items: center;
+}
+
+.writer{
+	width: 80px; height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #98ABBE;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.date_name{
+	width: 80px; height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #98ABBE;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.input_txt{
+	text-align: center;
+	width: 259px;
+	padding: 13px 0 13px 0;
+	font-size: 15px;
+	border-bottom: 1px solid #d0d0d0;
+	outline: 0;
+}
+
+.input_txt_date{
+	text-align: center;
+	width: 145px;
+	padding: 13px 0 13px 0;
+	font-size: 15px;
+	border-bottom: 1px solid #d0d0d0;
+	outline: 0;
+}
+
+/*.input_txt:hover{
+	border-bottom: 1px solid #201658; 
+}
+
+.input_txt:focus{
+	border-bottom: 1px solid #201658; 
+}*/
+
+/************************************************************/
+
+.content_title{
+	display: flex;
+}
+
+.title_name{
+	width: 80px; height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #98ABBE;
+	border-bottom: 1px solid #d0d0d0;
+	border-radius: 6px 0 0 0;
+	
+}
+
+.title_item{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.input_txt_title{
+	text-align: center;
+	width: 494px;
+	padding: 13px 0 13px 0;
+	font-size: 15px;
+	border-bottom: 1px solid #d0d0d0;
+	outline: 0;
+}
+
+/*.input_txt_title:hover{
+	border-bottom: 1px solid #201658; 
+}
+
+.input_txt_title:focus{
+	border-bottom: 1px solid #201658; 
+}*/
+
+/************************************************************/
+
+.content_text{
+	display: flex;
+	
+}
+
+.content_name{
+	width: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #98ABBE;
+	border-radius: 0 0 0 6px;
+}
+
+.content{
+	padding: 5px 0px 0px 8px;
+	width: 500px;
+	min-height: 250px;
+	resize: none;
+	outline: none;
+	overflow-y: hidden;
+}
+
+/************************************************************/
+
+.btn_area {
+	display: flex;
+	justify-content: center;
+}
+
+.update_btn_box{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+	margin-top: 30px;
+	margin-right: 10px;	
+}
+
+.update_box{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 25px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    
+    background-color: white;
+}
+
+.update_box:hover {
+	border: 1px solid #201658;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #98ABBE;
+    border-radius: 10px;
+}
+
+.cancel_btn_box{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}
+
+.cancel_box{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 40px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: white;
+    background-color: #201658;
+}
+
+.cancel_box:hover {
+	border: 1px solid white;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #98ABBE;
+    border-radius: 10px;
+}
+
+/************************************************************/
+
+.comment_area{
+	padding-top: 20px;
+}
+
+.page_title{
+	font-weight: bold;
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+	margin-top: 25px;
+	display: flex;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.comment_list{
+	border: 1px solid #C4C4C4;
+	border-radius: 5px;
+	padding: 5px 8px 5px 8px;
+}
+
+.comment_content_list{
+	display: flex;
+	justify-content: space-between;
+}
+
+.name_comment{
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.comment_b{
+	padding-left: 10px;
+	width: auto; height: auto;
+	resize: none;
+	outline: none;
+}
+
+/************************************************************/
+
+.comment_add{
+	margin-top: 10px;
+	border: 1px solid #C4C4C4;
+	border-radius: 5px;
+}
+
+.comment_info{
+	padding-top: 5px;
+	display: flex;
+}
+
+.writer_area{
+	padding: 0 0 0 10px;
+	display: flex;
+}
+
+.writer_title{
+	width: 50px;
+	text-align: center;
+}
+
+.writer_input{
+	padding-left: 5px;
+}
+
+.comment_writer{
+	border: 1px solid #C4C4C4;
+	padding-left: 5px;
+	border-radius: 5px;
+	width: 170px;
+}
+
+.pass_area{
+	padding: 0 0 0 10px;
+	display: flex;
+}
+
+.pass_title{
+	width: 67px;
+	text-align: center;
+}
+
+.password_input{
+	padding-left: 5px;
+}
+
+.comment_password{
+	border: 1px solid #C4C4C4;
+	padding-left: 5px;
+	border-radius: 5px;
+	width: 170px;
+}
+
+.comment_content{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.comment{
+	border: 1px solid #C4C4C4;
+	border-radius: 5px;
+	padding-left: 10px;
+	width: 477px;
+	height: 110px;
+	resize: none;
+	outline: none;
+}
+
+.comment_btn_box{
+	display: flex;
+    justify-content: center;
+}
+
+.comment_upload{
+	border: 1px solid #C4C4C4;
+	border-radius: 10px;
+	
+	padding: 10px 10px;
+}
+
+.comment_upload:hover {
+	border: 1px solid #201658;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #98ABBE;
+    border-radius: 10px;
+}
