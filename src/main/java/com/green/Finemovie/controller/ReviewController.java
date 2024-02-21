@@ -1,8 +1,7 @@
 package com.green.Finemovie.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -10,6 +9,7 @@ import com.green.Finemovie.domain.dto.ReviewDTO;
 import com.green.Finemovie.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
+import templates.utils.PageData;
 
 
 
@@ -30,14 +30,17 @@ public class ReviewController {
 
 	
 	@GetMapping("/reviewBoard")
-	public List<ReviewDTO> reviewBoard(
+	public String reviewBoard(
 				@RequestParam(name = "page", defaultValue = "1") int page,
-				@RequestParam(name = "search",defaultValue = "",required = false) String search
+				@RequestParam(name = "search",defaultValue = "",required = false) String search,
+				Model model
 			) {
 		
+
+	   
 		reviewService.listProcess(page, search);
         return "review/reviewBoard";  // Create a ResponseEntity
-	
+
 	}
 
 
