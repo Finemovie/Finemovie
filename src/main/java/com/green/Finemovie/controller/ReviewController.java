@@ -35,7 +35,8 @@ public class ReviewController {
 				@RequestParam(name = "search",defaultValue = "",required = false) String search
 			) {
 		
-        return reviewService.listProcess(page,search);  // Create a ResponseEntity
+		reviewService.listProcess(page, search);
+        return "review/reviewBoard";  // Create a ResponseEntity
 	
 	}
 
