@@ -36,9 +36,11 @@ public class ReviewController {
 				Model model
 			) {
 		
+
 	   
 		reviewService.listProcess(page, search);
         return "review/reviewBoard";  // Create a ResponseEntity
+
 	}
 
 
