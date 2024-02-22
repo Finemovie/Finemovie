@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+main {
+	margin-top:100px;
+	margin-bottom:100px;
+}
+.container {
+	display: flex;
+	
+	justify-content: center;
+	height:700px;
+}
+.left {
+	padding-right:10px;
+	width:20%;
+	max-width:400px;
+}
+
+.right {
+	width:60%;
+	border-left:3px solid #eee;
+	max-width:720px;
+	
+}
+
+.left_1 {
+	display: flex;
+	flex-direction: column;
+	height:50%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.ment {
+	margin:15px 0;
+}
+.left_1 > div > .film {
+	width:200px;
+	margin:0, auto;
+	padding:auto;
+}
+
+.left_2 {
+	height:30%;
+}
+.left_2 > ul{
+	padding-top:10px;
+	font-size:20px;
+	background-color: rgba(29, 36, 202, 0.1);
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	margin-bottom:30px;
+}
+.left_2 > ul > div{
+	background-color: rgba(29, 36, 202, 0.1);
+	height:30px;
+}
+.left_2 > ul > a> li{
+	padding:5px 20px;
+	background-color: white;
+}
+.profile {
+	margin:70px 0 0 50px;
+}
+
+.profile > p {
+	background-color: rgba(29, 36, 202, 0.1);
+    max-width:1200px;
+	width:auto;
+	font-size: 25px;
+	padding:10px;
+	font-weight:700;
+	border-radius: 5%;
+}
+
+.lists > li{
+	padding:5px 0 5px 20px;
+}
+
+.lists > li > span {
+	padding-left:10px;
+	font-weight:400;
+}
+
+.lists > li > a> span {
+	padding-left:10px;
+	font-weight:400;
+}

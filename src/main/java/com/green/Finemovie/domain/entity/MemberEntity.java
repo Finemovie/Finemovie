@@ -1,7 +1,5 @@
 package com.green.Finemovie.domain.entity;
 
-import java.math.BigInteger;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,10 +20,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Entity
-@Table(name = "employee")
-@SequenceGenerator(name = "gen_emp_seq", sequenceName = "emp_seq", allocationSize = 1)
+@Table(name = "member")
+@SequenceGenerator(name = "gen_mem_seq", sequenceName = "mem_seq", allocationSize = 1)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,10 +31,10 @@ import lombok.Setter;
 public class MemberEntity {
 	
 	@Id
-	@GeneratedValue(generator = "gen_emp_seq", strategy = GenerationType.SEQUENCE)
-	private long memNo;
+	@GeneratedValue(generator = "gen_mem_seq", strategy = GenerationType.SEQUENCE)
+	private Integer memNo;
 	
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false, unique=true)
 	private String memUsername;
 	
 	@Column(nullable = false)
@@ -47,10 +44,11 @@ public class MemberEntity {
 	private String memName;
 	
 	@Column
-	private Date memBirth;
+	private String memBirth;
 	
-	@Column
-	private BigInteger memPhone;
+	
+	@Column(nullable = false, unique = true)
+	private String memPhone;
 	
 	
 	private String memRole;

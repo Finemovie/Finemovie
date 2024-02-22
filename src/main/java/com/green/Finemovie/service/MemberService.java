@@ -7,7 +7,7 @@ public interface MemberService {
 	void memRegistration(MemberDTO memberDTO);
 	
 
-	boolean existsByempUsername(String empUsername);
+	boolean existsByempUsername(String memUsername);
 	
 	void employeeUpdate(MemberDTO memberDTO);
 
