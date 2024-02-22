@@ -3,6 +3,7 @@ package com.green.Finemovie.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.green.Finemovie.domain.dto.ReviewDTO;
 import com.green.Finemovie.mybatis.mapper.ReviewMapper;
@@ -20,7 +21,7 @@ public class ReviewProcess implements ReviewService {
 	private final ReviewMapper reviewMapper;
 	
 	@Override
-	public List<ReviewDTO> listProcess(int page, String search) {
+	public ModelAndView listProcess(int page, String search) {
 		
 		int limit=10;
 		int offset=Math.max(0, (page-1)*limit);
@@ -34,7 +35,6 @@ public class ReviewProcess implements ReviewService {
 		
 		int rowCount = reviewMapper.countAllSearch(search);
 		
-		PageData pageData = PageData.create(page, limit, rowCount);
 		
 		if(rowCount <=0) {
 			page=1;
@@ -48,11 +48,14 @@ public class ReviewProcess implements ReviewService {
 		System.out.println(">>>>>>>"+search);
 		
 
-		List<ReviewDTO> reviewList = reviewMapper.findAll(search, offset, limit);
-		pageData.setData(reviewList);
+		return new ModelAndView("review/reviewBoard")
+				.addObject("list",reviewMapper.findAll(search, offset, limit))
+				.addObject("pu",PageData.create(page, limit, rowCount, 5))
+				.addObject("search",search)
+				.addObject("hasResults",hasResults)
+				;
 		
 
-		return reviewMapper.findAll(search, offset, limit);
 		
 	}
 	

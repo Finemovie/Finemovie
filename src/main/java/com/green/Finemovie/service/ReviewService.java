@@ -1,12 +1,10 @@
 package com.green.Finemovie.service;
 
-import java.util.List;
-
-import com.green.Finemovie.domain.dto.ReviewDTO;
+import org.springframework.web.servlet.ModelAndView;
 
 public interface ReviewService {
 
-	List<ReviewDTO> listProcess(int page, String search);
+	ModelAndView listProcess(int page, String search);
 
 	
 	

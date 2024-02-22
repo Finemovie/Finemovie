@@ -5,8 +5,8 @@
 <mapper namespace="com.green.Finemovie.mybatis.mapper.ReviewMapper">
 	
 	<insert id="save">  <!--인터페이스 매퍼파일의 구현 -->
-		insert into review(title, content, writer,count,grade) <!--물리 DB에 잇는 컬럼명 그대로-->
-		values(#{title}, #{content}, #{writer} ,#{count},#{grade}) <!--DTO, 카멜로 표현-->
+		insert into review(title, content, writer,grade) <!--물리 DB에 잇는 컬럼명 그대로-->
+		values(#{title}, #{content}, #{writer} ,#{grade}) <!--DTO, 카멜로 표현-->
 	</insert>
   
 	<select id="findAll" resultType="com.green.Finemovie.domain.dto.ReviewDTO"> <!--조회할 개수가 여러개인 경우 resultType 정의해주어야한다.-->
