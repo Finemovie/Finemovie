@@ -91,5 +91,10 @@ public class FreeServiceProcess implements FreeService {
 	public FreeEntity getFreeById(long freeNo) {
 	    return freeEntityRepository.findById(freeNo).orElse(null);
 	}
+
+	@Override
+	public void deleteFreeDetails(long freeNo) {
+		
+	}
 	
 }
