@@ -22,8 +22,8 @@ public class MemberServiceProcess implements MemberService {
 
 	@Override
 	public void memRegistration(MemberDTO memberDTO) {
-		MemberEntity employeeEntity = memberEntityRepository
-				.save(memberDTO.toEmployeeEntity(passwordEncoder).addRole(MyRole.USER));
+		MemberEntity memberEntity = memberEntityRepository
+				.save(memberDTO.toMemberEntity(passwordEncoder).addRole(MyRole.USER));
 		// POST
 		// https://workplace.apigw.ntruss.com/organization/apigw/v2/company/{companyId}/employee/{externalKey}
 
@@ -31,18 +31,19 @@ public class MemberServiceProcess implements MemberService {
 
 	// empUSername이 존재하는지 찾아 boolean으로 리턴
 	@Override
-	public boolean existsByempUsername(String empUsername) {
-		return memberEntityRepository.existsByEmpUsername(empUsername);
+	public boolean existsByempUsername(String memUsername) {
+		return memberEntityRepository.existsByMemUsername(memUsername);
 	}
 
 	@Override
-	public void employeeUpdate(MemberDTO employeeDTO) {
+	public void employeeUpdate(MemberDTO memberDTO) {
 		// TODO Auto-generated method stub
 	}
 
-	public Member getMemberByUsername(String empUsername) {
+	public Member getMemberByUsername(String memUsername) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }

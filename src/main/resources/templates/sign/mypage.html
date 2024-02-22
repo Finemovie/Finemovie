@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/sign/mypage.css">
+
+</head>
+
+<body>
+	<main>
+		<th:block sec:authorize="isAuthenticated()">
+			<p th:text="${#authentication.principal.memName}"></p>
+
+			<div class="container">
+				<div class="left">
+					<div class="left_1">
+						<div class="ment">@@@님 환영합니다.</div>
+						<div><img class="film" src="/img/sign/person.svg"></div>
+						<a href="#">
+							<div class="modify">프로필 수정</div>
+						</a>
+					</div>
+					<div class="left_2">
+						<ul>
+							<div>회원정보</div>
+							<a href="#">
+								<li>개인정보 변경</li>
+							</a>
+							<a href="#">
+								<li>회원탈퇴</li>
+							</a>
+							<a href="#">
+								<li>간편로그인설정(oauth2)</li>
+							</a>
+
+						</ul>
+						<ul>
+							<div> <a>(임시)나의 예매내역(임시)</a></div>
+						</ul>
+						<ul>
+							<div>(임시)내 쿠폰(임시)</div>
+							<a>
+								<li>(임시)쿠폰 사용내역</li>
+							</a>
+							<a>
+								<li>(임시)선물함</li>
+							</a>
+
+						</ul>
+					</div>
+				</div>
+				<div class="right">
+					<div class="profile">
+						<p>프로필 정보</p>
+						<ul class="lists">
+							<li><img src="/img/sign/profile.svg"><span>@@@</span> </li>
+							<li><img src="/img/sign/smartphone.svg"><span>010-@@@-@@@@</span></li>
+							<li><img src="/img/sign/birth.svg"><span>입력한 생일</span></li>
+						</ul>
+					</div>
+
+					<div class="profile">
+						<p>회원정보 변경</p>
+						<ul class="lists">
+							<li><a href="#"><span>개인정보 변경</span></a></li>
+							<li><a href="#"><span>간편 로그인 설정</span></a></li>
+							<li><a href="#"><span>회원탈퇴</span></a></li>
+						</ul>
+					</div>
+					<div class="profile">
+						<p>나의 예매내역</p>
+						<ul class="lists">
+							<li><a href="#"><span>예매내역</span></a></li>
+							<li><a href="#"><span>포인트적립</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			</div>
+
+
+		</th:block>
+	</main>
+</body>
+
+</html>

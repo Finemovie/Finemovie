@@ -39,40 +39,29 @@ public class SignController {
 
 	// 회원가입 저장
 	@PostMapping("/sign/signup")
-	public String memRegistration(MemberDTO memberDTO) {
+	public String memberRegistration(MemberDTO memberDTO) {
 		memberServiceProcess.memRegistration(memberDTO);
 
 		return "redirect:/sign";
 	}
 
 	@ResponseBody
-	public boolean checkEmpUsername(@RequestParam(value = "empUsername") String empUsername) {
-		return memberServiceProcess.existsByempUsername(empUsername);
+	public boolean checkMemUsername(@RequestParam(value = "memUsername") String memUsername) {
+		return memberServiceProcess.existsByempUsername(memUsername);
 	}
 
 	@GetMapping("/mypage")
 	public String myPage(Model model, Principal principal) {
 		//현재 로그인한 사용자의 아이디를 가져온다.
-		String empUsername=principal.getName();
-        Member member = memberServiceProcess.getMemberByUsername(empUsername);
+		String memUsername=principal.getName();
+        Member member = memberServiceProcess.getMemberByUsername(memUsername);
 
 		//아이디를 기반으로 회원정보를 조회한다.
-        model.addAttribute("empUsername", empUsername);
+        model.addAttribute("memUsername", memUsername);
 		return "/sign/mypage";
 	}
 
-	@GetMapping("/signin")
-	public String signin() {
-		return "/sign/signin";
-	}
+	
 
-	@GetMapping("/accessDenied")
-	public String accessDenied() {
-		return "sign/accessDenied";
-	}
-//	
-//	@GetMapping("/mypage")
-//	public String myPage() {
-//		return "/sign/mypage";
-//	}
+
 }

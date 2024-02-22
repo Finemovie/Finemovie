@@ -14,16 +14,16 @@ import lombok.Setter;
 @Setter
 public class MemberDTO {
 	
-	private long memNo;
+	private Integer memNo;
 	private String memUsername;
 	private String memPassword;
 	private String memName;
 	private String memRole;
-	private BigInteger memPhone;
-	private Date memBirth;
+	private String memBirth;
+	private String memPhone;
 	
 	
-	public MemberEntity toEmployeeEntity(PasswordEncoder passwordEncoder) {
+	public MemberEntity toMemberEntity(PasswordEncoder passwordEncoder) {
 		return MemberEntity.builder()
 				.memUsername(memUsername)
 				.memPassword(passwordEncoder.encode(memPassword))
@@ -33,4 +33,7 @@ public class MemberDTO {
 				.memPhone(memPhone)
 				.build();
 	}
+
+
+	
 }

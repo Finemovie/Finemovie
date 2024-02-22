@@ -1,26 +1,25 @@
 package com.green.Finemovie.domain.entity;
 
-import java.lang.reflect.Member;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MemberEntityRepository extends JpaRepository<MemberEntity, Long> {
+public interface MemberEntityRepository extends JpaRepository<MemberEntity, Integer> {
 	
-	Optional<MemberEntity> findByEmpUsername(String empUsername);
+	Optional<MemberEntity> findByMemUsername(String memUsername);
 
-	boolean existsByEmpUsername(String empUsername); //USername이 이미 존재하는지.
+	boolean existsByMemUsername(String memUsername); //USername이 이미 존재하는지.
 	
-	MemberEntity findByEmpName(String empName);
+	MemberEntity findByMemName(String memName);
 	
-    boolean existsByEmpName(String empName);
+    boolean existsByMemName(String memName);
 
-    MemberEntity findByEmpNo(long empNo);
+    MemberEntity findByMemNo(long memNo);
     
-    List<MemberEntity> findAllByEmpName(String empName);
+    List<MemberEntity> findAllByMemName(String memName);
 
-	List<MemberEntity> findAllByEmpRole(String empRole);
+	List<MemberEntity> findAllByMemRole(String memRole);
 
 
 	
