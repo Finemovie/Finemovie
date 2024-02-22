@@ -1,5 +1,7 @@
 package com.green.Finemovie.free;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -50,4 +53,13 @@ public class FreeController {
 	    model.addAttribute("freeDetails", freeEntity);
 	    return "/free/freeDetails";
 	}
+	
+	
+		
+	// 게시글 삭제
+	@PostMapping("/deleteFreeDetails")
+    public String deleteFreeDetails(@RequestParam("freeNo") long freeNo) {
+        freeService.deleteFreeDetails(freeNo);
+        return "redirect:/freeList";
+    }
 }

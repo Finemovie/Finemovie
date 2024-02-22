@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>자유게시글 등록 페이지</title>
 <link rel="shortcut icon" type="image/x-icon" href="/img/imageicon.svg">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<!-- 부트스트랩 css 사용 -->
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<!--  부트스트랩 js 사용 -->
@@ -22,8 +23,9 @@
 <main>
 	<div class="container_free_details">
 		<div class="btn_place">
+			<a href="/freeList" class="edit" style="margin-right: 382px; background: none; padding-top: 10px; color: black; text-decoration-line: none; ">◀ Back</a>
 			<p class="edit"><button type="button" class="edit_button" onclick="toggleEditMode(this)">수정</button></p>
-			<p class="edit"><button type="button" name="selectedStudents" class="selectedStudents">삭제</button></p>
+			<p class="edit"><button type="button" name="deleteFreeDetails" class="deleteFreeDetails" data-freeNo="게시글의번호">삭제</button></p>
 		</div>
 		<div class="page_content">
 			<div class="content_free_details">
@@ -57,7 +59,7 @@
 							<input type="submit" value="수정 하기" class="update_box"></input>
 						</div>	
 						<div class="cancel_btn_box" style="display: none;">
-							<a href="/freeDetails"><input type="button" value="취소" class="cancel_box"></input></a>
+							<a href="javascript:void(0);" onclick="cancelEdit()" class="cancel_box">취소</a>
 						</div>
 					</div>
 				</form>
