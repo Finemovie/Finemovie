@@ -75,9 +75,9 @@
 
         <th>번호</th>
 
+		<th>글쓴이</th>
+	
         <th>제목</th>
-
-        <th>글쓴이</th>
 
         <th>평점</th>
         
@@ -90,20 +90,24 @@
     </thead>
 
   <tbody>
-	  <th:block th:each="">
+	  <th:block th:each="dto:${list}">
 	  	 <tr>
 	
-		        <td>1</td>
+		        <td th:text="${dto.no}">번호</td>
 		
-		        <td>비트코인 떡락</td>
+		        <td th:text="${dto.writer}">글쓴이</td>
 		
-		        <td>네오보유자</td>
+		        <td>
+					<a th:href="|/reviewBoard/${dto.no}|" th:text="${dto.title}">
+					제목
+					</a>
+				</td>
 		
-		        <td>4.5/5</td>
+		        <td th:text="${dto.grade}">평점</td>
 		        
-		        <td>1</td>
+		        <td th:text="${dto.count}">조회수</td>
 		        
-		        <td>2018-03-11</td>
+		        <td th:text="${#temporals.format(dto.createdAt, 'MM월 dd일 a:hh:mm')}">작성일</td>
 	
 	      </tr>
 	  </th:block>

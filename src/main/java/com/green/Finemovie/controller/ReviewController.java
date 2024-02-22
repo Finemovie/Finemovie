@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.green.Finemovie.service.ReviewService;
 
@@ -28,16 +29,13 @@ public class ReviewController {
 
 	
 	@GetMapping("/reviewBoard")
-	public String reviewBoard(
+	public ModelAndView reviewBoard(
 				@RequestParam(name = "page", defaultValue = "1") int page,
-				@RequestParam(name = "search",defaultValue = "",required = false) String search,
-				Model model
+				@RequestParam(name = "search",defaultValue = "",required = false) String search
+			
 			) {
-		
 
-	   
-		reviewService.listProcess(page, search);
-        return "review/reviewBoard";  // Create a ResponseEntity
+        return reviewService.listProcess(page, search);  // Create a ResponseEntity
 
 	}
 
