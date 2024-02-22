@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.rating {
+    direction: rtl;
+    text-align: left;
+}
+.star {
+    display: inline-block;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-image: url("/img/reviewSlide/star-empty-icon.svg");
+    background-size: cover;
+}
+.star.on {
+    background-image: url("/img/reviewSlide/star-full-icon.svg");
+}
+.star.half {
+    background-image: url("/img/reviewSlide/star-half-icon.svg");
+}
