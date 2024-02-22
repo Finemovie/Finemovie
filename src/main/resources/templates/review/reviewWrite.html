@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
+<head>
+	
+<meta charset="UTF-8">
+		<!-- 부트스트랩 css 사용 -->
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<!--  부트스트랩 js 사용 -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+      
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/review/styles.css" rel="stylesheet" />
+		<script src="/summerNote/summernote-lite.js"></script>
+		<script src="/summerNote/summernote-ko-KR.js"></script>
+		<link rel="stylesheet" href="/summerNote/summernote-lite.css">
+		<link rel="stylesheet" href="/review/reviewwrite.css">
+		
+
+<script>
+	$(document)
+			.ready(
+					function() {
+						$('#summernote')
+								.summernote(
+										{
+											toolbar : [
+													[ 'fontname',
+															[ 'fontname' ] ],
+													[ 'fontsize',
+															[ 'fontsize' ] ],
+													[
+															'style',
+															[
+																	'bold',
+																	'italic',
+																	'underline',
+																	'strikethrough',
+																	'clear' ] ],
+													[
+															'color',
+															[ 'forecolor',
+																	'color' ] ],
+													[ 'table', [ 'table' ] ],
+													[
+															'para',
+															[ 'ul', 'ol',
+																	'paragraph' ] ],
+													[ 'height', [ 'height' ] ],
+													[
+															'insert',
+															[ 'picture',
+																	'link',
+																	'video' ] ],
+													[
+															'view',
+															[ 'fullscreen',
+																	'help' ] ] ],
+											height : "500",
+											lang : "ko-KR",
+											fontNames : [ 'Arial',
+													'Arial Black',
+													'Comic Sans MS',
+													'Courier New', '맑은 고딕',
+													'궁서', '굴림체', '굴림', '돋움체',
+													'바탕체' ],
+											fontSizes : [ '8', '9', '10', '11',
+													'12', '14', '16', '18',
+													'20', '22', '24', '28',
+													'30', '36', '50', '72' ],
+										});
+					});
+</script>
+
+</head>
+<body>
+<main>
+	
+			<div class="form">
+				<h1 class="title">공지사항 등록</h1>
+				<table>
+					<tbody>
+						<tr>
+							<th>작성자</th>
+								<td style="width: 100px;">
+								  <p th:text="${writer}"></p>
+								</td>
+							<th>평점 선택</th>
+							<td>
+							    <div class="rating" data-rating="0">
+							        <span class="star" data-value="0.5"></span>
+							        <span class="star" data-value="1"></span>
+							        <span class="star" data-value="1.5"></span>
+							        <span class="star" data-value="2"></span>
+							        <span class="star" data-value="2.5"></span>
+							        <span class="star" data-value="3"></span>
+							        <span class="star" data-value="3.5"></span>
+							        <span class="star" data-value="4"></span>
+							        <span class="star" data-value="4.5"></span>
+							        <span class="star" data-value="5"></span>
+							    </div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+			</div>
+			
+			<form method="post" action="/reviewWrite">
+				
+			<div class="form bn">
+				<h1 class="title"></h1>
+					<div id="middlePost" class="flex">
+						<h1 class="doc-title flex center">제목</h1>
+						<input type="text" class="title-content" name="boardTitle" th:value="${title}">
+					</div>
+			</div>
+			
+			   
+		
+			    <textarea id="summernote"  type="hidden" name="boardContent" th:value="${content}"></textarea>
+			    
+				<div class="postBtn">  
+					
+			  	  <button type="submit">등록</button>
+				
+				</div>  
+			
+			</form>
+
+<script>
+	$(function() {
+	    $(".rating .star").on("click", function() {
+	        var $this = $(this);
+	        var $rating = $this.parent();
+	        var value = $this.data("value");
+	        $rating.data("rating", value);
+	
+	        $rating.find(".star").each(function() {
+	            var $star = $(this);
+	            if ($star.data("value") <= value) {
+	                if (value % 1 === 0.5 && $star.data("value") === value - 0.5) {
+	                    $star.removeClass("on").addClass("half");
+	                } else {
+	                    $star.removeClass("half").addClass("on");
+	                }
+	            } else {
+	                $star.removeClass("on half");
+	            }
+	        });
+	    });
+	});
+</script>
+
+
+</main>
+</body>
+</html>

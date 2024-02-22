@@ -67,6 +67,17 @@
 
 	</div>
 
+				<div  class="search">
+					<label for="name">제목 검색</label>
+				
+					<form id="search-form" onsubmit="searchClicked(this, event)">
+						<input class="search-input" name="search" th:value="${search}">
+						<button class="search-button" type="submit"></button>
+					</form>
+				
+				</div>
+				
+
   <table class="table table-hover">
 
     <thead>
@@ -114,6 +125,62 @@
 	</tbody>
 
   </table>
+  
+  
+	<div th:if="${not hasResults}" class="no-results">
+	  <p>검색 결과가 존재하지 않습니다.</p>
+	  <a class="back-btn" th:href="|/reviewBoard|">Back</a> 
+	</div>
+	
+	<div th:if="${pu.tot > 0}" class="pagging-wrap">
+		<a th:if="${pu.from > 1}" class="firstPage" th:href="|/reviewBoard?page=${1}&search=${search}|">
+			<button>&lt;&lt;</button>
+		</a>
+		<a th:if="${pu.from > 1}" th:href="|/reviewBoard?page=${pu.from-1}&search=${search}|">
+			<button>&lt;</button>
+		</a>
+
+		<span id="pagging">
+			<a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}"
+				th:href="|/reviewBoard?page=${pno}&search=${search}|">
+				<button th:text="${pno}"></button>
+			</a>
+		</span>
+
+		<a th:if="${pu.to < pu.tot}" th:href="|/reviewBoard?page=${pu.to+1}&search=${search}|">
+			<button>&gt;</button>
+		</a>
+		<a class="lastPage" th:href="|/reviewBoard?page=${pu.tot}&search=${search}|">
+			<button>&gt;&gt;</button>
+		</a>
+	</div>
+	
+<script th:inline="javascript">
+	var page =/*[[${param.page}]]*/null;
+	var pageLimit =/*[[${pu.pageLimit}]]*/null; //화면에 page개수
+	if (page == null) page = "1";
+	var idx = (parseInt(page) - 1) % pageLimit; //idx = index //한 화면의 페이지개수
+	//alert(page);
+	//const element = document.getElementsById("pagging");
+	//console.log($(".btn-page").eq(idx));
+	//$(".btn-page").eq(idx).addClass("target");
+	var elements = document.querySelectorAll(".btn-page");
+	elements[idx].classList.add("target");
+	console.log(idx,':',elements[idx] );
+	//eq가 idx와 같다
+
+</script>
+
+<script>
+	
+	function searchClicked(form, event) {
+  event.preventDefault(); 
+  var searchTerm = form.search.value;
+  window.location.href = "/reviewBoard?page=1&search=" + encodeURIComponent(searchTerm);
+}
+	
+	
+</script>
 
 </div>	
 
