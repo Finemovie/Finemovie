@@ -3,6 +3,63 @@
 	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
 <head>
 <meta charset="UTF-8">
+<script src="/summerNote/summernote-lite.js"></script>
+<script src="/summerNote/summernote-ko-KR.js"></script>
+<link rel="stylesheet" href="/summerNote/summernote-lite.css">
+<script>
+	$(document)
+			.ready(
+					function() {
+						$('#summernote')
+								.summernote(
+										{
+											toolbar : [
+													[ 'fontname',
+															[ 'fontname' ] ],
+													[ 'fontsize',
+															[ 'fontsize' ] ],
+													[
+															'style',
+															[
+																	'bold',
+																	'italic',
+																	'underline',
+																	'strikethrough',
+																	'clear' ] ],
+													[
+															'color',
+															[ 'forecolor',
+																	'color' ] ],
+													[ 'table', [ 'table' ] ],
+													[
+															'para',
+															[ 'ul', 'ol',
+																	'paragraph' ] ],
+													[ 'height', [ 'height' ] ],
+													[
+															'insert',
+															[ 'picture',
+																	'link',
+																	'video' ] ],
+													[
+															'view',
+															[ 'fullscreen',
+																	'help' ] ] ],
+											height : "500",
+											lang : "ko-KR",
+											fontNames : [ 'Arial',
+													'Arial Black',
+													'Comic Sans MS',
+													'Courier New', '맑은 고딕',
+													'궁서', '굴림체', '굴림', '돋움체',
+													'바탕체' ],
+											fontSizes : [ '8', '9', '10', '11',
+													'12', '14', '16', '18',
+													'20', '22', '24', '28',
+													'30', '36', '50', '72' ],
+										});
+					});
+</script>
 </head>
 <body>
 	<main>
@@ -16,8 +73,8 @@
 						name="title">
 				</div>
 				<div>
-					<label for="content">내용</label> <input type="text" maxlength="255"
-						name="content">
+					<label for="content">내용</label>
+					<textarea id="summernote" type="hidden" name="content" th:value="${content}"></textarea>
 				</div>
 				<div class="button_area">
 					<button class="join_button">
