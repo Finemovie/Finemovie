@@ -1,5 +1,7 @@
 package com.green.Finemovie.controller;
 
+import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +39,12 @@ public class ReviewController {
 
         return reviewService.listProcess(page, search);  // Create a ResponseEntity
 
+	}
+	
+	@GetMapping("/reviewWrite")
+	public String reviewWrite(Authentication auth, Model model) {
+		return reviewService.getReview(auth, model);
+		
 	}
 
 

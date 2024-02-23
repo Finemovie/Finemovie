@@ -63,19 +63,10 @@
 	
   <h2>영화 리뷰 게시판</h2>    
   
-   <a href="contentWrite.jsp" class="btn btn-primary pull-right">리뷰쓰기</a>      
+   <a id="reviewBtn" href="/reviewWrite" class="btn btn-primary pull-right">리뷰쓰기</a>      
 
 	</div>
 
-				<div  class="search">
-					<label for="name">제목 검색</label>
-				
-					<form id="search-form" onsubmit="searchClicked(this, event)">
-						<input class="search-input" name="search" th:value="${search}">
-						<button class="search-button" type="submit"></button>
-					</form>
-				
-				</div>
 				
 
   <table class="table table-hover">
@@ -127,12 +118,24 @@
   </table>
   
   
+  	<div  class="search">
+					<label for="name">제목 검색 : </label>
+				
+					<form id="search-form" onsubmit="searchClicked(this, event)">
+						<input class="search-input" name="search" th:value="${search}">
+						<button class="search-button" type="submit">검색</button>
+					</form>
+				
+				</div>
+				
+ 
+  
 	<div th:if="${not hasResults}" class="no-results">
 	  <p>검색 결과가 존재하지 않습니다.</p>
 	  <a class="back-btn" th:href="|/reviewBoard|">Back</a> 
 	</div>
 	
-	<div th:if="${pu.tot > 0}" class="pagging-wrap">
+	<div th:if="${pu.tot > 0}" class="pagging-wrap" id="paggingBtn">
 		<a th:if="${pu.from > 1}" class="firstPage" th:href="|/reviewBoard?page=${1}&search=${search}|">
 			<button>&lt;&lt;</button>
 		</a>
@@ -154,6 +157,9 @@
 			<button>&gt;&gt;</button>
 		</a>
 	</div>
+	
+	
+	
 	
 <script th:inline="javascript">
 	var page =/*[[${param.page}]]*/null;

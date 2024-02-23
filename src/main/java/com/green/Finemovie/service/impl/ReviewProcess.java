@@ -2,7 +2,9 @@ package com.green.Finemovie.service.impl;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.Finemovie.domain.dto.ReviewDTO;
@@ -57,6 +59,12 @@ public class ReviewProcess implements ReviewService {
 		
 
 		
+	}
+
+	@Override
+	public String getReview(Authentication auth, Model model) {
+		
+		return null;
 	}
 	
 	
