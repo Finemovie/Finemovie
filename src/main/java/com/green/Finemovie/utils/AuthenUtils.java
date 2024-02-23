@@ -1,4 +1,4 @@
-package templates.utils;
+package com.green.Finemovie.utils;
 
 import org.springframework.security.core.Authentication;
 

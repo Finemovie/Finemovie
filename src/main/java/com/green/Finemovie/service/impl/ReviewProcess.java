@@ -10,10 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.green.Finemovie.domain.dto.ReviewDTO;
 import com.green.Finemovie.mybatis.mapper.ReviewMapper;
 import com.green.Finemovie.service.ReviewService;
+import com.green.Finemovie.utils.PageData;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import templates.utils.PageData;
 
 @Slf4j
 @RequiredArgsConstructor
