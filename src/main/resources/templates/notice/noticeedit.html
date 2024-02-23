@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<main>
+		<div id="detail-view">
+			<div th:each="detail : ${noticeEditDTO}">
+				<div style="width: 160px">제목</div>
+				<div id="title" style="width: 160px" th:text="${detail.title}"></div>
+				<div style="width: 380px">내용</div>
+				<div id="content" style="width: 380px" th:text="${detail.content}"></div>
+				<div>
+					<button class="button01" type="button" onclick="btnUpdateClicked()">수정</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function btnUpdateClicked() {
+				const detailView = document.getElementById("detail-view");
+				detailView.style.display = "none";
+
+				const updateView = document.getElementById("update-view");
+				updateView.style.display = "block";
+
+				// 제목과 내용 가져오기
+				const title = document.getElementById("title").innerText;
+				const content = document.getElementById("content").innerText;
+
+				// 값을 수정하는 폼에 설정
+				document.getElementById("update-title").value = title;
+				document.getElementById("update-content").value = content;
+			}
+		</script>
+		<form th:action="|/noticeedit/${noticeEditDTO.no}|" method="post"
+			id="update-view" style="display: none;">
+			<div>
+				<div>
+					<div class="name">제목</div>
+					<div class="text">
+						<input id="update-title" class="inp" type="text" name="title">
+					</div>
+				</div>
+				<div>
+					<div class="name">내용</div>
+					<div class="text">
+						<input id="update-content" maxlength="255" class="inp" type="text"
+							name="content">
+					</div>
+				</div>
+				<div class="button_area">
+					<div>
+						<input type="hidden" name="id" th:value="${noticeEditDTO.no}">
+						<input type="hidden" name="_method" value="put">
+						<button type="submit">수정</button>
+						<button type="button" onclick="history.back()">취소</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</main>
+</body>
+</html>

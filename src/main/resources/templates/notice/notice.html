@@ -3,9 +3,39 @@
 	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-	<main></main>
+	<main>
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 160px">제목</th>
+					<th style="width: 380px">내용</th>
+					<th style="width: 210px">작성자</th>
+					<th style="width: 180px">작성일</th>
+					<th style="width: 20px"></th>
+					<!-- 수정된 부분 -->
+				</tr>
+			</thead>
+			<tbody id="dynamic_table">
+				<tr th:each="notice, rowStat : ${noticeList}">
+					<td style="width: 160px" th:text="${notice.title}"></td>
+					<td style="width: 380px"><a
+						th:href="|/noticeedit/${notice.id}|"
+						style="display: block; width: 100%; height: 100%;"> <span
+							th:text="${notice.content}"></span>
+					</a></td>
+					<td style="width: 180px"
+						th:text="${#temporals.format(notice.createdAt, 'yyyy.MM.dd')}"></td>
+					<td style="width: 20px" th:if="${!rowStat.last}">
+						<div class="horizontal-line"></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="button">
+			<button th:onclick="window.location.href='/addnotice'">글쓰기</button>
+		</div>
+	</main>
 </body>
 </html>
