@@ -77,24 +77,33 @@ function toggleEditMode(button) {
     }
 }
 
-// 수정하기 버튼 클릭 이벤트
-$(document).on('click', '.update_box', function() {
+document.querySelector('.update_box').addEventListener('click', function() {
     // 수정 내용을 서버로 전송
-    $.ajax({
-        type: 'POST',
-        url: '/updateEndpoint', // 수정을 처리할 서버 엔드포인트
-        data: $('#freeDetailsForm').serialize(), // 폼 데이터 전송
-        success: function(response) {
-            // 성공 시 필요한 동작 수행
-            console.log(response);
+    fetch('/editFree', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
-        error: function(error) {
-            // 오류 처리
-            console.log(error);
-        }
+        body: JSON.stringify(Object.fromEntries(new FormData(document.forms["freeDetailsForm"]))),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 성공 시 필요한 동작 수행
+        console.log(data);
+        
+        // 여기에 디테일 페이지 갱신 로직 추가
+        // 예시: 디테일 페이지의 특정 부분을 업데이트
+        document.querySelector('.title_name').innerText = data.title;
+        document.querySelector('.writer').innerText = data.writer;
+        document.querySelector('.content_text').innerText = data.content;
+        
+        // 수정 모드 비활성화
+        toggleEditMode(document.querySelector('.update_box'));
+    })
+    .catch(error => {
+        // 오류 처리
+        console.error('Error:', error);
     });
-    // 수정 모드 비활성화
-    toggleEditMode(this);
 });
 
 
@@ -127,3 +136,5 @@ function cancelEdit() {
     // 현재 페이지로 이동 (새로고침)
     window.location.reload();
 }
+
+

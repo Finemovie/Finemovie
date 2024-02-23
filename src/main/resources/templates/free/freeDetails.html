@@ -22,14 +22,14 @@
 <body>
 <main>
 	<div class="container_free_details">
-		<div class="btn_place">
-			<a href="/freeList" class="edit" style="margin-right: 382px; background: none; padding-top: 10px; color: black; text-decoration-line: none; ">◀ Back</a>
-			<p class="edit"><button type="button" class="edit_button" onclick="toggleEditMode(this)">수정</button></p>
-			<p class="edit"><button type="button" name="deleteFreeDetails" class="deleteFreeDetails" data-freeNo="게시글의번호">삭제</button></p>
-		</div>
-		<div class="page_content">
-			<div class="content_free_details">
-				<form name="freeDetailsForm" action="/freeDetails" method="post" onsubmit="return validateAndSubmit()">
+		<form id="freeDetailsForm" action="/freeDetails" method="post" onsubmit="return validateAndSubmit()">
+			<div class="btn_place">
+				<a href="/freeList" class="edit" style="margin-right: 382px; background: none; padding-top: 10px; color: black; text-decoration-line: none; ">◀ Back</a>
+				<p class="edit"><button type="button" class="edit_button" onclick="toggleEditMode(this)">수정</button></p>
+				<p class="edit"><button type="button" name="deleteFreeDetails" class="deleteFreeDetails" onclick="deleteFree()">삭제</button></p>
+			</div>
+			<div class="page_content">
+				<div class="content_free_details">
 					<div class="main_area">
 						<div class="content_title">
 							<div class="title_name">제목</div>
@@ -62,50 +62,49 @@
 							<a href="javascript:void(0);" onclick="cancelEdit()" class="cancel_box">취소</a>
 						</div>
 					</div>
-				</form>
-				<div class="comment_area">
-					<div class="page_title">
-						Comment
-					</div>
-					<div class="comment_list">
-						<div class="comment_content_list">
-							<div class="name_comment">
-								<!--<input type="text" class="input_txt" id="writer" name="writer" th:value="${freeBoard.writer}" readonly>-->
-								<div type="text" class="comment_writer_name" id="comment_writer" name="comment_writer" readonly>홍길동</div>
-							
-								<!--<div type="text" class="comment_content" id="content" name="content" readonly>${freeBoard.content}</div>-->
-								<div type="text" class="comment_b" id="comment" name="comment" readonly>헬로월드</div>
-							</div>
-							<!--<div class="comment_createdDate" th:text="${comment.createdDate}"></div>-->
-							<div class="comment_createdDate">2024-02-20</div>
-						</div>
-					</div>
-					<form>
-						<div class="comment_add">
-							<div class="comment_info">
-								<div class="writer_area">
-									<div class="writer_title">작성자</div>
-									<div class="writer_input">
-										<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.', validateCommentWriter();" oninput="" autocomplete="off" class="comment_writer" name="comment_writer">
-									</div>
-								</div>	
-								<div class="pass_area">	
-									<div class="pass_title">비밀번호</div>
-									<div class="password_input">
-										<input type="password"  maxlength='8' placeholder="8자리 비밀번호 입력." onfocus="this.placeholder = ''" onblur="this.placeholder = '8자리 비밀번호를 입력.', validateCommentPassword()" autocomplete="off" class="comment_password" name="comment_password">
-									</div>
-								</div>	
-							</div>
-							<div class="comment_content">
-								<textarea type="text" placeholder="댓글을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '댓글을 입력해주세요.', validateComment();" oninput="" autocomplete="off" class="comment" name="comment"></textarea>
-								<div class="comment_btn_box">
-									<input type="submit" value="댓글 작성" class="comment_upload"></input>
-								</div>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
+		</form>
+		<div class="comment_area">
+			<div class="page_title">
+				Comment
+			</div>
+			<div class="comment_list">
+				<div class="comment_content_list">
+					<div class="name_comment">
+						<!--<input type="text" class="input_txt" id="writer" name="writer" th:value="${freeBoard.writer}" readonly>-->
+						<div type="text" class="comment_writer_name" id="comment_writer" name="comment_writer" readonly>홍길동</div>
+						<!--<div type="text" class="comment_content" id="content" name="content" readonly>${freeBoard.content}</div>-->
+						<div type="text" class="comment_b" id="comment" name="comment" readonly>헬로월드</div>
+					</div>
+					<!--<div class="comment_createdDate" th:text="${comment.createdDate}"></div>-->
+					<div class="comment_createdDate">2024-02-20</div>
+				</div>
+			</div>
+			<form>
+				<div class="comment_add">
+					<div class="comment_info">
+						<div class="writer_area">
+							<div class="writer_title">작성자</div>
+							<div class="writer_input">
+								<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.', validateCommentWriter();" oninput="" autocomplete="off" class="comment_writer" name="comment_writer">
+							</div>
+						</div>	
+						<div class="pass_area">	
+							<div class="pass_title">비밀번호</div>
+							<div class="password_input">
+								<input type="password"  maxlength='8' placeholder="8자리 비밀번호 입력." onfocus="this.placeholder = ''" onblur="this.placeholder = '8자리 비밀번호를 입력.', validateCommentPassword()" autocomplete="off" class="comment_password" name="comment_password">
+							</div>
+						</div>	
+					</div>
+					<div class="comment_content">
+						<textarea type="text" placeholder="댓글을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '댓글을 입력해주세요.', validateComment();" oninput="" autocomplete="off" class="comment" name="comment"></textarea>
+						<div class="comment_btn_box">
+							<input type="submit" value="댓글 작성" class="comment_upload"></input>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </main>

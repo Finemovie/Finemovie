@@ -15,6 +15,7 @@ public interface FreeService {
 
 	FreeEntity getFreeById(long freeNo);
 
-	void deleteFreeDetails(long freeNo);
+	void deleteCommentsByFreeNo(long freeNo);
+
 
 }
