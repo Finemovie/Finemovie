@@ -32,7 +32,7 @@ ul.imgs li img {
     object-fit: cover; /* 원본 비율을 유지하면서 부모 요소 내에 꽉 차도록 */
 }
 	
-	.bullets {
+.bullets {
 	    position: absolute;
 	    left: 50%;
 	    transform: translateX(-50%);
@@ -40,7 +40,7 @@ ul.imgs li img {
 	    z-index: 2;
 	}
 	
-	.bullets label {
+.bullets label {
 	    display: inline-block;
 	    border-radius: 50%;
 	    background-color: rgba(0, 0, 0, 0.55);
@@ -50,15 +50,15 @@ ul.imgs li img {
 	    margin-right: 5px;
 	}
 	
-	.bullets label:hover {
+.bullets label:hover {
 	    background-color: #fff;
 	}
 	
-	input[type="radio"] {
+input[type="radio"] {
 	    display: none;
 	}
 	
-	input[type="radio"]:checked ~ .imgs {
+input[type="radio"]:checked ~ .imgs {
 	    transform: translateX(-25%); /* 이미지 수에 따라 조정 */
 	}
 	
@@ -81,4 +81,45 @@ ul.imgs li img {
 	margin-top: 20px;
 	display: flex;
 	justify-content: space-between;
+	border-bottom: 1px solid rgb(170, 170, 170);
+	
+}
+
+#reviewBtn{
+	
+	font-size: 24px;
+	vertical-align: middle;
+	background-color: #666;
+	margin-bottom: 15px;
+}
+
+.search{
+	justify-content: center;
+	display: flex;
+	margin:20px;
+}
+
+.search label{
+	
+	margin-right: 10px;
+}
+
+#paggingBtn{
+	
+	display: flex;
+	justify-content: center;
+	margin: 10px 0 20px 0;
+}
+
+#paggingBtn button{
+	
+	    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: white;
+    margin-left: 10px;
 }
