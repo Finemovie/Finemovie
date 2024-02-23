@@ -14,7 +14,6 @@ import com.green.Finemovie.service.NoticeService;
 import com.green.Finemovie.service.NoticeUpdateDTO;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
 public class NoticeController {
@@ -45,11 +44,9 @@ public class NoticeController {
 		return "notice/noticeedit";
 	}
 
-	@PutMapping("/noticeedit/{no}")
+	@PostMapping("/noticeedit/{no}")
 	public String update(@PathVariable(name = "no") long no, NoticeUpdateDTO dto) {
 		noticeService.updateProcess(no, dto);
 		return "redirect:/noticeedit/" + no;
 	}
-	
-	
 }
