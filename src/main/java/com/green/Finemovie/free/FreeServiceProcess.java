@@ -1,5 +1,6 @@
 package com.green.Finemovie.free;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +14,6 @@ import org.springframework.ui.Model;
 
 import com.green.Finemovie.free.comment.CommentEntityRepository;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -95,8 +95,36 @@ public class FreeServiceProcess implements FreeService {
 	    return freeEntityRepository.findById(freeNo).orElse(null);
 	}
 	
+	// FreeServiceProcess.java에 게시글 삭제 메서드 추가
 	@Override
-    public void deleteCommentsByFreeNo(long freeNo) {
-        commentEntityRepository.deleteByFreeNo(freeNo);
-    }
+	public void deleteFree(long freeNo) {
+	    // 게시글 삭제 로직 추가
+	    freeEntityRepository.deleteById(freeNo);
+	}
+	
+	@Override
+	public void updateFree(FreeDTO dto) {
+	    FreeEntity existingFree = freeEntityRepository.findById(dto.getFreeNo())
+	            .orElseThrow(() -> new RuntimeException("해당 게시글이 존재하지 않습니다."));
+
+	    // 업데이트할 필드만 설정합니다.
+	    existingFree.setTitle(dto.getTitle());
+	    existingFree.setContent(dto.getContent());
+	    existingFree.setUpdatedDate(LocalDateTime.now());
+
+	    // 엔터티를 레포지토리에 저장합니다.
+	    freeEntityRepository.save(existingFree);
+	}
+
+	@Override
+	public void increaseViewCount(long freeNo) {
+	    FreeEntity existingFree = freeEntityRepository.findById(freeNo)
+	            .orElseThrow(() -> new RuntimeException("해당 게시글이 존재하지 않습니다."));
+
+	    // 조회수 증가
+	    existingFree.setViewCount(existingFree.getViewCount() + 1);
+
+	    // 엔터티를 레포지토리에 저장
+	    freeEntityRepository.save(existingFree);
+	}
 }

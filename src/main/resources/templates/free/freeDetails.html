@@ -22,21 +22,33 @@
 <body>
 <main>
 	<div class="container_free_details">
-		<form id="freeDetailsForm" action="/freeDetails" method="post" onsubmit="return validateAndSubmit()">
+		<div class="page_content">
 			<div class="btn_place">
 				<a href="/freeList" class="edit" style="margin-right: 382px; background: none; padding-top: 10px; color: black; text-decoration-line: none; ">◀ Back</a>
-				<p class="edit"><button type="button" class="edit_button" onclick="toggleEditMode(this)">수정</button></p>
-				<p class="edit"><button type="button" name="deleteFreeDetails" class="deleteFreeDetails" onclick="deleteFree()">삭제</button></p>
+				<div style="display: flex;">
+					<p class="edit">
+					    <button type="button" class="edit_button" onclick="toggleEditMode()">수정</button>
+					</p>
+				    <form id="deleteForm" action="/deleteFree" method="post" onsubmit="return confirm('게시글을 삭제하시겠습니까?')">
+				        <input type="hidden" name="freeNo" th:value="${freeDetails.freeNo}">
+				        <button type="submit" name="deleteFree" class="deleteFree">삭제</button>
+				    </form>
+			    </div>
 			</div>
-			<div class="page_content">
-				<div class="content_free_details">
-					<div class="main_area">
-						<div class="content_title">
-							<div class="title_name">제목</div>
-							<div class="title_item">
-								<input type="text" class="input_txt_title" id="title" name="title" th:value="${freeDetails.title}" readonly>
+			<div class="content_free_details">
+				<div class="main_area">
+					<form id="editForm" action="/freeSaveChanges" method="post" onsubmit="return validateAndUpdate()">
+					    <input type="hidden" name="freeNo" th:value="${freeDetails.freeNo}">
+					    <div class="content_title">
+					        <div class="title_name">제목</div>
+					        <div class="title_item">
+					            <input type="text" class="input_txt_title" id="title" name="title" th:value="${freeDetails.title}">
+					        </div>
+					        <div class="date_name">조회수</div>
+					        <div class="title_item">
+								<div class="input_txt_date" th:text="${freeDetails.viewCount}"></div>
 							</div>
-						</div>
+					    </div>
 						<div class="write_user">
 							<div class="writer">작성자</div>
 							<div class="title_item">
@@ -53,18 +65,18 @@
 								<textarea class="content" id="content" name="content" oninput="autoResize()" th:text="${freeDetails.content}" readonly></textarea>
 							</div>
 						</div>
-					</div>
-					<div class="btn_area">
-						<div class="update_btn_box" style="display: none;">
-							<input type="submit" value="수정 하기" class="update_box"></input>
-						</div>	
-						<div class="cancel_btn_box" style="display: none;">
-							<a href="javascript:void(0);" onclick="cancelEdit()" class="cancel_box">취소</a>
+						<div class="btn_area">
+							<div class="update_btn_box" style="display: none;">
+								<input type="submit" value="수정 하기" class="update_box" onclick="saveChanges()"></input>
+							</div>	
+							<div class="cancel_btn_box" style="display: none;">
+								<a href="javascript:void(0);" onclick="cancelEdit()" class="cancel_box">취소</a>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
-		</form>
+		</div>
 		<div class="comment_area">
 			<div class="page_title">
 				Comment

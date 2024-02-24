@@ -15,7 +15,10 @@ public interface FreeService {
 
 	FreeEntity getFreeById(long freeNo);
 
-	void deleteCommentsByFreeNo(long freeNo);
+	void deleteFree(long freeNo);
 
+	void updateFree(FreeDTO freeDTO);
+
+	void increaseViewCount(long freeNo);
 
 }

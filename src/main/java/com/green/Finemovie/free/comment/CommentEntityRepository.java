@@ -7,8 +7,4 @@ import org.springframework.data.repository.query.Param;
 
 public interface CommentEntityRepository extends JpaRepository<CommentEntity, Long>{
 
-	@Modifying
-    @Query("DELETE FROM CommentEntity c WHERE c.freeEntity.freeNo = :freeNo")
-    void deleteByFreeNo(@Param("freeNo") long freeNo);
-	
 }
