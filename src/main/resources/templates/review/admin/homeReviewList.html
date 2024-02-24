@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Review Listings</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script>
+    function generateStars(rating) {
+        let stars = '';
+        for (let i = 0; i < rating; i++) {
+            stars += '<div class="bi-star-fill"></div>';
+        }
+        return stars;
+    }
+
+    $(document).ready(function() {
+        fetch('/api/reviews')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.querySelector('.container');
+            data.forEach(review => {
+                container.innerHTML += `
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="${review.image_url}" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">${review.title}</h5>
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        ${generateStars(review.rating)}
+                                    </div>
+                                    ${review.introduction}
+                                </div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">자세히 보기</a></div>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        });
+    });
+</script>
+</head>
+<body>
+    <div class="container">
+        <!-- Reviews will be loaded here -->
+    </div>
+</body>
+</html>
+
+
+</head>
+<body>
+	
+	
+
+
+</body>
+</html>

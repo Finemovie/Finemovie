@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrator Page</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<style>
+	body{
+		margin:0;
+	}
+	
+  .sidebar {
+	font-size: 20px;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    background-color: #f8f9fa;
+  }
+
+  .main-content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  .admin-header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin-left: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .admin-photo {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center the image */
+  }
+  .home-button {
+    background-color: #ffffff;
+    border: 2px solid #007bff; /* Make button look convex */
+    color: #007bff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 5px #999;
+  }
+  .home-button:hover { background-color: #ddd; }
+  .home-button:active {
+    background-color: #ccc;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+  }
+  
+  /* Styles for upper menu items */
+.nav-link {
+  color: #007bff; /* Light blue color for text */
+}
+
+.admin-photo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.listt {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: rgb(64, 0, 0); /* Bootstrap primary color */
+    background-color: #f8f9fa; /* Light background */
+    border-left: 3px solid transparent; /* For a subtle effect when not active */
+    transition: all 0.3s;
+}
+
+.listt:hover, .listt:focus {
+    color: #0056b3; /* Slightly darker blue on hover/focus */
+    background-color: #e9ecef; /* Light grey background on hover/focus */
+    border-left-color: #007bff; /* Highlight color on hover/focus */
+    text-decoration: none; /* Override default underlining of links */
+}
+
+/* Active State Styling, assuming you can add an 'active' class via JS or server-side rendering */
+.listt.active {
+    color: #fff; /* White text for active state */
+    background-color: #007bff; /* Bootstrap primary color for background */
+    border-left-color: #0056b3; /* Darker blue border for active state */
+}
+
+body > div.sidebar > h4{
+	
+	display: flex;
+	justify-content: center;
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h4 class="text-center p-3">리뷰 관리자 메뉴</h4>
+  
+  <ul class="nav flex-column">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle listt" href="#" id="homeReviewsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        홈 리뷰
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="homeReviewsDropdown">
+        <li><a class="dropdown-item listt" href="/homeReviewList">홈 리뷰 목록</a></li>
+        <li><a class="dropdown-item listt" href="/homeReviewWrite">홈 리뷰 등록</a></li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle listt" href="#" id="criticReviewsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        평론가 리뷰
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="criticReviewsDropdown">
+        <li><a class="dropdown-item listt" href="#">평론 리뷰 목록</a></li>
+        <li><a class="dropdown-item listt" href="#">평론 리뷰 등록</a></li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle listt" href="#" id="planningReviewDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        기획 리뷰
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="planningReviewDropdown">
+        <li><a class="dropdown-item listt" href="#">기획 목록</a></li>
+        <li><a class="dropdown-item listt" href="#">기획 등록</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="admin-header">
+  <h2>리뷰 관리자</h2>
+  <button onclick="location.href='/reviewHome'" class="home-button">Home</button>
+</div>
+
+<div class="main-content">
+  <img src="/img/reviewMain/mary-grace-hudson-5dqj8bc_ZAg-unsplash.jpg" alt="Admin Dashboard Photo" class="admin-photo">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Review Registration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center; /* Align vertically center */
+            justify-content: center; /* Align horizontally center */
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .container {
+            background-color: #ffffff; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners for the form */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            width: 100%;
+            max-width: 600px; /* Adjusted form width for aesthetics */
+        }
+        .form-label {
+            font-weight: 600; /* Slightly bolder labels for better readability */
+        }
+        .btn-primary, .btn-secondary {
+			 background-color: rgb(219, 219, 219);
+            width: 49%; /* Adjusted button width for side-by-side layout */
+            height: 50px; /* Set the height of the buttons */
+        }
+        .btn-secondary {
+            background-color: rgb(219, 219, 219); /* Bootstrap secondary button color */
+            border-color: #6c757d;
+        }
+        .form-footer {
+            display: flex;
+            justify-content: space-between; /* Space between submit and cancel buttons */
+            margin-top: 20px; /* Margin at the top for spacing */
+        }
+        #introduction {
+            width: 600px; /* Default width for textarea */
+            height: 650px; /* Increased height for textarea */
+            margin-top: 10px;
+        }
+        
+        .mb-3{
+			margin: 10px 0;
+		}
+		
+		.mb-4{
+			display: flex;
+			justify-content: center;
+			font-size: 32px;
+		}
+		
+		
+		
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">홈 리뷰 등록</h2>
+        <form action="/submitReview" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="photo" class="form-label">영화 사진</label>
+                <input class="form-control" type="file" id="photo" name="photo">
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">영화 제목</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="rating" class="form-label">영화 평점</label>
+                <select class="form-select" id="rating" name="rating">
+                    <option selected>Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="director" class="form-label">감독 이름</label>
+                <input type="text" class="form-control" id="director" name="director" required>
+            </div>
+            <div class="mb-3">
+                <label for="introduction" class="form-label">영화 소개 글</label>
+                <textarea class="form-control" id="introduction" name="introduction" rows="3"></textarea>
+            </div>
+            <div class="form-footer">
+				<button type="button" class="btn btn-secondary" onclick="window.history.back();">취소</button>
+                <button type="submit" class="btn btn-primary">등록</button>
+                
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
