@@ -10,3 +10,4 @@ public enum MyRole {
 	ADMIN("ADMIN");
 	private final String roleName;
 }
+

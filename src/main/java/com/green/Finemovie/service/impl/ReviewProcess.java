@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.Finemovie.domain.dto.HomeReviewDTO;
 import com.green.Finemovie.domain.dto.ReviewDTO;
 import com.green.Finemovie.mybatis.mapper.ReviewMapper;
 import com.green.Finemovie.service.ReviewService;
@@ -66,6 +67,20 @@ public class ReviewProcess implements ReviewService {
 		
 		return null;
 	}
+
+	@Override
+	public void addReview(HomeReviewDTO homeReviewDTO) {
+		reviewMapper.insertReview(homeReviewDTO);
+	}
+
+	@Override
+	public List<HomeReviewDTO> getAllReviews() {
+		
+		return reviewMapper.findAllReviews();
+	}
+	
+	
+	
 	
 	
 }

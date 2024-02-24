@@ -123,3 +123,33 @@ input[type="radio"]:checked ~ .imgs {
     background-color: white;
     margin-left: 10px;
 }
+
+.search-input{
+	margin-right:10px;
+}
+
+.card.h-100 .card-img-top {
+    width: 100%; /* 이미지가 부모 요소 너비의 100%를 차지하도록 */
+    height: 66.666%; /* 부모 요소 높이의 2/3을 차지하도록 (100% / 3 * 2) */
+    object-fit: cover; /* 원본 비율을 유지하면서 부모 요소 내에 꽉 차도록 */
+}
+
+.slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%; /* Ensure the slider takes the full width of its parent */
+    height: 853px; /* Adjust this based on your design requirements */
+}
+
+.box {
+    flex: 0 0 auto;
+    width: 100%; /* Each box takes up the full width of the slider */
+    height: 100%; /* Ensure each box takes up the full height of the slider */
+}
+
+.box img {
+    width: 100%; /* Ensure images stretch to fill the width of the box */
+    height: 100%; /* Ensure images stretch to fill the height of the box */
+    object-fit: cover; /* Cover the box without losing the aspect ratio */
+    display: block; /* Remove any default margin/padding */
+}
