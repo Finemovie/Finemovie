@@ -22,108 +22,132 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('content').addEventListener('input', autoResize);
 
 
-// 수정 모드 토글 함수
-function toggleEditMode(button) {
-    var form = document.forms["freeDetailsForm"];
-    var inputs = form.getElementsByTagName("input");
-    var textarea = form.getElementsByTagName("textarea")[0];
+// 취소 버튼 클릭 이벤트
+function cancelEdit() {
+    // 현재 페이지로 새로고침
+    window.location.reload();
+}
 
-    if (button.innerHTML === "수정") {
+// 수정 모드 토글 함수
+function toggleEditMode() {
+    var form = document.getElementById("editForm");
+    var titleInput = form.querySelector('input[name="title"]');
+    var contentTextarea = form.querySelector('textarea[name="content"]');
+
+    if (document.querySelector('.edit_button').innerText === "수정") {
         // 수정 모드 활성화
         // 현재 데이터를 보존
         originalData = {
-            title: form.elements["title"].value,
-            writer: form.elements["writer"].value,
-            content: form.elements["content"].value
-            // 필요한 경우 다른 필드도 추가
+            title: titleInput.value,
+            content: contentTextarea.value
         };
 
         // 수정 버튼 및 취소 버튼 표시
-        $(".update_btn_box, .cancel_btn_box").show();
+        document.querySelector('.update_btn_box').style.display = "block";
+        document.querySelector('.cancel_btn_box').style.display = "block";
 
         // 숨겨진 요소들 표시
-        $(".comment_area, .btn_place").hide();
+        document.querySelector('.comment_area').style.display = "none";
+        document.querySelector('.btn_place').style.display = "none";
 
-        // 읽기 전용 해제
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].removeAttribute("readonly");
-        }
-        textarea.removeAttribute("readonly");
+        // 제목과 내용만 읽기 전용 해제
+        titleInput.removeAttribute("readonly");
+        contentTextarea.removeAttribute("readonly");
 
         // 수정 모드 클래스 추가
         document.body.classList.add('edit-mode');
     } else {
         // 수정 모드 비활성화
         // 수정 중인 데이터를 초기 상태로 복구
-        form.elements["title"].value = originalData.title;
-        form.elements["writer"].value = originalData.writer;
-        form.elements["content"].value = originalData.content;
-        // 필요한 경우 다른 필드도 복구
+        titleInput.value = originalData.title;
+        contentTextarea.value = originalData.content;
 
         // 수정 버튼 및 취소 버튼 숨김
-        $(".update_btn_box, .cancel_btn_box").hide();
+        document.querySelector('.update_btn_box').style.display = "none";
+        document.querySelector('.cancel_btn_box').style.display = "none";
 
         // 숨겨진 요소들 숨김 해제
-        $(".comment_area, .btn_place").show();
+        document.querySelector('.comment_area').style.display = "block";
+        document.querySelector('.btn_place').style.display = "flex";
 
-        // 읽기 전용 설정
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].setAttribute("readonly", true);
-        }
-        textarea.setAttribute("readonly", true);
+        // 제목과 내용만 읽기 전용 설정
+        titleInput.setAttribute("readonly", true);
+        contentTextarea.setAttribute("readonly", true);
 
         // 수정 모드 클래스 제거
         document.body.classList.remove('edit-mode');
     }
 }
 
-// 수정하기 버튼 클릭 이벤트
-$(document).on('click', '.update_box', function() {
+// 수정 저장 버튼 클릭 이벤트
+document.querySelector('.update_box').addEventListener('click', function () {
     // 수정 내용을 서버로 전송
-    $.ajax({
-        type: 'POST',
-        url: '/updateEndpoint', // 수정을 처리할 서버 엔드포인트
-        data: $('#freeDetailsForm').serialize(), // 폼 데이터 전송
-        success: function(response) {
-            // 성공 시 필요한 동작 수행
-            console.log(response);
-        },
-        error: function(error) {
-            // 오류 처리
-            console.log(error);
-        }
-    });
-    // 수정 모드 비활성화
-    toggleEditMode(this);
+    saveChanges(form);
 });
 
-
-// 취소 버튼 클릭 이벤트
-function cancelEdit() {
-    // 수정 중인 데이터를 초기 상태로 복구
-    var form = document.forms["freeDetailsForm"];
-    form.elements["title"].value = originalData.title;
-    form.elements["writer"].value = originalData.writer;
-    form.elements["content"].value = originalData.content;
-    // 필요한 경우 다른 필드도 복구
-
-    // 수정 버튼 및 취소 버튼 숨김
-    $(".update_btn_box, .cancel_btn_box").hide();
-
-    // 숨겨진 요소들 숨김 해제
-    $(".comment_area, .btn_place").show();
-
-    // 읽기 전용 설정
-    var inputs = form.getElementsByTagName("input");
-    var textarea = form.getElementsByTagName("textarea")[0];
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].setAttribute("readonly", true);
-    }
-    textarea.setAttribute("readonly", true);
+// 저장
+function saveChanges(form) {
+    console.log('saveChanges 함수 호출');
     
-    // 수정 모드 비활성화
-    toggleEditMode(this);
+    // 수정할 게시글의 정보 추출
+    var freeNo = form.querySelector('.freeNo').value;
+    var title = form.querySelector('.title').value;
+    var content = form.querySelector('.content').value;
+    
+    // 유효성 검사
+    if (!validateInput(title, content)) {
+        alert('수정 실패. 입력 정보를 다시 확인하세요.');
+        return false;
+    }
 
-    // 현재 페이지로 이동 (새로고침)
-    window.location.reload();
+    // 서버로 전송할 데이터 준비
+    var data = {
+        freeNo: freeNo,
+        title: title,
+        content: content
+    };
+
+    // 서버로 데이터 전송
+fetch('/freeSaveChanges', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+    console.log('저장 완료:', data);
+    if (data.redirect) {
+        // 수정이 완료되면 리다이렉션
+        window.location.href = data.redirect;
+    } else {
+        toggleEditMode();
+        alert('게시글이 수정되었습니다.');
+    }
+})
+.catch((error) => {
+    console.error('저장 실패:', error);
+    alert('수정 실패. 다시 시도하세요.');
+});
 }
+
+// 입력값 유효성 검사
+function validateInput(title, content) {
+    if (!title || !content) {
+        return false;
+    }
+    return true;
+}
+
+//게시글 삭제 로직
+function confirmAndDelete() {
+        if (confirm('게시글을 삭제하시겠습니까?')) {
+            // 게시글 삭제를 위한 폼 선택
+            var deleteForm = document.getElementById('deleteForm');
+            
+            // 폼을 서버로 제출
+            deleteForm.submit();
+        }
+    }
+	

@@ -35,8 +35,6 @@ public class FreeDTO {
 	
 	private LocalDateTime updatedDate;
 	
-	private Character cancel;
-	
 	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = LocalDateTime.of(createdDate, LocalTime.now());
 	}
@@ -55,20 +53,8 @@ public class FreeDTO {
 				.viewCount(viewCount)
 				.createdDate(createdDate)
 				.updatedDate(updatedDate)
-				.cancel(cancel)
 				.build();
 
-	/*public FreeEntity toFreeEntity(PasswordEncoder passwordEncoder) {
-		return FreeEntity.builder()
-				.freeNo(freeNo)
-				.writer(writer)
-				.password(passwordEncoder.encode(password))
-				.title(title)
-				.content(content)
-				.viewCount(viewCount)
-				.createdDate(createdDate)
-				.updatedDate(updatedDate)
-				.build();*/
 	}
 
 }

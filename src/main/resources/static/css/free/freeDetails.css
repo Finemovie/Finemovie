@@ -13,16 +13,16 @@ button{
 	margin-top: 30px;
 	box-sizing: border-box; user-select: none !important;
 	height: auto;
+	display: flex;
+    flex-direction: column; /* 요소들을 세로로 배치 */
+    align-items: center;
 }
 
 .page_content{
-	display: flex;
-	justify-content: center;
-	
+	margin-bottom: 30px;
 }
 
 .content_free_details{
-	margin-bottom: 40px;
 }
 
 .main_area{
@@ -41,8 +41,12 @@ input{
 
 .btn_place{
 	display: flex;
-    justify-content: end;
-    width: 880px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.edit{
+	margin: 0;
 }
 
 .edit_button{
@@ -65,7 +69,7 @@ input{
     border-radius: 10px;
 }
 
-.deleteFreeDetails{
+.deleteFree{
 	border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 10px;
@@ -77,7 +81,7 @@ input{
     background-color: white;
 }
 
-.deleteFreeDetails:hover {
+.deleteFree:hover {
 	border: 1px solid #201658;
     box-sizing: border-box;
     border-radius: 10px;
@@ -161,7 +165,7 @@ input{
 
 .input_txt_title{
 	text-align: center;
-	width: 494px;
+	width: 259px;
 	padding: 13px 0 13px 0;
 	font-size: 15px;
 	border-bottom: 1px solid #d0d0d0;
@@ -208,8 +212,6 @@ input{
 }
 
 .update_btn_box{
-	display: flex;
-	justify-content: center;
 	margin-bottom: 20px;
 	margin-top: 30px;
 	margin-right: 10px;	
@@ -236,18 +238,14 @@ input{
 }
 
 .cancel_btn_box{
-	display: flex;
-	justify-content: center;
-	margin-bottom: 20px;
-	margin-top: 30px;
+	margin-top: 41px;
 }
 
 .cancel_box{
 	text-decoration-line: none;
-	border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 10px;
-    padding: 15px 40px;
+    padding: 13px 40px;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
@@ -266,14 +264,14 @@ input{
 /************************************************************/
 
 .comment_area{
-	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .page_title{
 	font-weight: bold;
 	font-size: 1.8rem;
+	padding-left: 5px;
 	margin-bottom: 20px;
-	margin-top: 25px;
 	display: flex;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #d0d0d0;
@@ -378,6 +376,7 @@ input{
 .comment_btn_box{
 	display: flex;
     justify-content: center;
+    padding-left: 10px;
 }
 
 .comment_upload{
