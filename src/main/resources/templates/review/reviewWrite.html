@@ -92,7 +92,7 @@
 						<tr>
 							<th>작성자</th>
 								<td style="width: 100px;">
-								  <p th:text="${writer}"></p>
+								  <p name="writer" th:text="${writer}"></p>
 								</td>
 							<th>평점 선택</th>
 							<td>
@@ -121,13 +121,13 @@
 				<h1 class="title"></h1>
 					<div id="middlePost" class="flex">
 						<h1 class="doc-title flex center">제목</h1>
-						<input type="text" class="title-content" name="boardTitle" th:value="${title}">
+						<input type="text" class="title-content" name="title" th:value="${title}">
 					</div>
 			</div>
 			
 			   
 		
-			    <textarea id="summernote"  type="hidden" name="boardContent" th:value="${content}"></textarea>
+			    <textarea id="summernote"  type="hidden" name="content" th:value="${content}"></textarea>
 			    
 				<div class="postBtn">  
 					

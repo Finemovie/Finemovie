@@ -1,6 +1,8 @@
 package com.green.Finemovie.mybatis;
 
 
+import java.time.LocalDateTime;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -45,13 +47,7 @@ public class MyBatisConfig {
 		return factoryBean.getObject();
 	}
 	
-	@ConfigurationProperties(prefix = "mybatis.configuration")
-	@Bean
-	org.apache.ibatis.session.Configuration mybatisConfiguration() {
-		
-		return new org.apache.ibatis.session.Configuration();
-		
-	}
+	
 
 
 	@Bean
@@ -66,5 +62,15 @@ public class MyBatisConfig {
 	HikariConfig hikariConfig() {
 		return new HikariConfig();
 	}
+	
+	@ConfigurationProperties(prefix = "mybatis.configuration")
+	@Bean
+	org.apache.ibatis.session.Configuration mybatisConfiguration() {
+	    org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+	    // Java 8 날짜/시간 API 타입 핸들러 등록 예시
+	    configuration.getTypeHandlerRegistry().register(LocalDateTime.class, org.apache.ibatis.type.LocalDateTimeTypeHandler.class);
+	    return configuration;
+	}
+
 	
 }

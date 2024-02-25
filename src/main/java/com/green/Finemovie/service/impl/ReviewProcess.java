@@ -9,8 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.green.Finemovie.domain.dto.HomeReviewDTO;
 import com.green.Finemovie.domain.dto.ReviewDTO;
+import com.green.Finemovie.domain.dto.ReviewWriteDTO;
 import com.green.Finemovie.mybatis.mapper.ReviewMapper;
 import com.green.Finemovie.service.ReviewService;
+import com.green.Finemovie.utils.AuthenUtils;
 import com.green.Finemovie.utils.PageData;
 
 import lombok.RequiredArgsConstructor;
@@ -65,7 +67,22 @@ public class ReviewProcess implements ReviewService {
 	@Override
 	public String getReview(Authentication auth, Model model) {
 		
-		return null;
+		long memberId = AuthenUtils.extractMemberNo(auth);
+		System.out.println(memberId);
+		
+		if (memberId == 0) {
+		    return "redirect:/login";
+		}
+		
+		ReviewWriteDTO dto = reviewMapper.findNameById(memberId);
+		String name = dto.getWriter();
+		
+		model.addAttribute("title","");
+		model.addAttribute("content","");
+		model.addAttribute("writer",name);
+		
+		
+		return "/review/reviewWrite";
 	}
 
 	@Override
@@ -77,6 +94,18 @@ public class ReviewProcess implements ReviewService {
 	public List<HomeReviewDTO> getAllReviews() {
 		
 		return reviewMapper.findAllReviews();
+	}
+
+	@Override
+	public String SaveReview(Authentication auth, ReviewWriteDTO dto) {
+		long memberId = AuthenUtils.extractMemberNo(auth);
+		ReviewWriteDTO member = reviewMapper.findNameById(memberId);
+		
+		dto.setWriter(member.getWriter());
+		
+		reviewMapper.save(dto);
+		
+		return "redirect:/reviewBoard";
 	}
 	
 	

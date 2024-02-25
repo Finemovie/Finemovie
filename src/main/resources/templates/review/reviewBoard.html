@@ -109,7 +109,9 @@
 		        
 		        <td th:text="${dto.count}">조회수</td>
 		        
-		        <td th:text="${#temporals.format(dto.createdAt, 'MM월 dd일 a:hh:mm')}">작성일</td>
+		        <td th:text="${#temporals.format(dto.createdAt, 'yyyy-MM-dd HH:mm')}">작성일</td>
+
+
 	
 	      </tr>
 	  </th:block>
