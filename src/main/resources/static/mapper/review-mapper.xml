@@ -9,8 +9,8 @@
 		values(#{title}, #{content}, #{writer} ,#{grade}) <!--DTO, 카멜로 표현-->
 	</insert>
   
-	<select id="findAll" resultType="com.green.Finemovie.domain.dto.ReviewDTO"> <!--조회할 개수가 여러개인 경우 resultType 정의해주어야한다.-->
-		select * from review
+	<select id="findAll" resultMap="ReviewResultMap"> <!--조회할 개수가 여러개인 경우 resultType 정의해주어야한다.-->
+		SELECT * from review
 	    WHERE no > 0 AND title LIKE CONCAT('%', #{search}, '%')
 	    order by no desc
 	    LIMIT #{offset}, #{limit}
@@ -20,5 +20,23 @@
 		select count(*) from review
 		WHERE no>0 AND title LIKE CONCAT('%', #{search}, '%')
 	</select>
+	
+	<select id="findNameById" resultType="com.green.Finemovie.domain.dto.ReviewWriteDTO">
+		select mem_no, mem_name as writer from member
+   		where mem_no=#{memberId}
+	</select>
+	
+	<resultMap id="ReviewResultMap" type="com.green.Finemovie.domain.dto.ReviewDTO">
+    <id property="no" column="no"/>
+    <result property="title" column="title"/>
+    <result property="content" column="content"/>
+    <result property="writer" column="writer"/>
+    <result property="count" column="count"/>
+    <result property="createdAt" column="created_at" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+    <result property="updatedAt" column="updated_at" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+    <result property="grade" column="grade"/>
+	</resultMap>
+
+	
   
 </mapper>

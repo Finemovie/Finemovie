@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.green.Finemovie.domain.dto.HomeReviewDTO;
 import com.green.Finemovie.domain.dto.ReviewDTO;
+import com.green.Finemovie.domain.dto.ReviewWriteDTO;
 
 
 
@@ -17,7 +18,7 @@ public interface ReviewMapper {
 
 	//mapper에 접속하는 DAO (data access object) 라고 보면 된다.
 	
-	void save(ReviewDTO reviewDTO);
+	void save(ReviewWriteDTO dto);
 	
 	List<ReviewDTO> findAll(@Param("search") String search, @Param("offset") int offset, @Param("limit") int limit);
 	
@@ -28,5 +29,7 @@ public interface ReviewMapper {
 
     @Select("SELECT * FROM home_review")
     List<HomeReviewDTO> findAllReviews();
+
+	ReviewWriteDTO findNameById(long memberId);
 
 }

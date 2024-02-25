@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.Finemovie.domain.dto.HomeReviewDTO;
+import com.green.Finemovie.domain.dto.ReviewWriteDTO;
 import com.green.Finemovie.service.ReviewService;
 import com.green.Finemovie.utils.AuthenUtils;
 
@@ -52,8 +53,14 @@ public class ReviewController {
 		return reviewService.getReview(auth, model);
 		
 	}
-
-
+	
+	@PostMapping("/reviewWrite")
+	public String save(Authentication auth, ReviewWriteDTO dto) {
+		
+		return reviewService.SaveReview(auth,dto);
+	}
+	
+	
 
 	
 	@GetMapping("/reviewPro")
