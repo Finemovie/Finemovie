@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+#daily{
+	display: flex;
+	justify-content: center;
+	margin: 50px 0;
+}
+
+#daily div{
+	border: 1px solid black;
+	margin: 0 20px;
+}
+
+#daily a{
+	display: flex;
+	justify-content: center;
+}
+
+.titlearea{
+	display: flex;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 0 30px;
+	margin-top: 10px;
+}
+
+.spoilerarea{
+	display: flex;
+	justify-content: center;
+	border-right: 1px solid black;
+	width: 10%;
+}
+
+.titlearea2{
+	display: flex;
+	justify-content: center;
+	width: 50%;
+	border-right: 1px solid black;
+}
+
+.writerarea{
+	display: flex;
+	justify-content: center;
+	width: 20%;
+	border-right: 1px solid black;
+}
+
+.readcountarea{
+	display: flex;
+	justify-content: center;
+	width: 10%;
+	border-right: 1px solid black;
+}
+
+.createdarea{
+	width: 10%;
+	display: flex;
+	justify-content: center;
+}
+
+.contentarea{
+	display: flex;
+	padding: 10px 30px;
+	border-bottom: 1px solid black;
+	align-items: center;
+}
+
+.spoiler{
+	display: flex;
+	justify-content: center;
+	width: 10%;
+}
+
+.title{
+	padding-left: 15px;
+	width: 50%;
+}
+.writer{
+	display: flex;
+	justify-content: center;
+	width: 20%;
+}
+.readcount{
+	display: flex;
+	justify-content: center;
+	width: 10%;
+}
+.created{
+	display: flex;
+	justify-content: center;
+	width: 10%;
+	padding-left: 20px;
+}
+
+#spoiler_true{
+	font-weight: bold;
+	display: block;
+	width: 80px;
+	height: 35px;
+	background-color: #fff;
+	border-radius: 18px;
+	border: 1px solid #ddd;
+	font-size: 15px;
+	color: #222;
+	text-align: center;
+	margin: 0 20px 0 10px;
+	line-height: 33px;
+}
+#spoiler_false {
+	font-weight: bold;
+	display: block;
+	width: 80px;
+	height: 35px;
+	background-color: #fff;
+	border-radius: 18px;
+	border: 1px solid #ddd;
+	line-height: 33px;
+	font-size: 15px;
+	color: red;
+	text-align: center;
+	margin: 0 20px 0 10px;
+}
+
+.pagearea{
+	display: flex;
+	justify-content: center;
+}
+
+a{
+	text-decoration-line: none;
+	color: black;
+}

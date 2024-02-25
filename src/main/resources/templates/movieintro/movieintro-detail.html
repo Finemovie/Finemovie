@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/movieintro/movieintro-detail.css">
+	<script type="text/javascript" src="/js/movieintro/movieintro-detail.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+	<main>
+		<h2 style="margin-top: 20px;">영화 소개 게시판</h2>
+		<section th:each="d:${detail}">
+			<input type="hidden" class="no" th:value="${d.no}">
+			<div class="titlearea">
+				<div class="spoiler" th:id="'spoiler_' + ${d.type}" th:text="${d.type} ?  스포일러無 : 스포일러有">
+					스포일러有</div>
+				<div class="title" th:text="${d.title}">title</div>
+				<div style="display: flex;">작성자&nbsp;&nbsp;:&nbsp;&nbsp;
+					<div class="writer" th:text="${d.writer}">writer</div>
+				</div>
+			</div>
+			<div class="titlearea2">
+				<div style="display: flex;">작성일&nbsp;&nbsp;:&nbsp;&nbsp;
+					<div class="created" th:text="${#temporals.format(d.createdAt, 'yyyy.MM.dd')}">2024-02-24</div>
+				</div>
+				<div style="display: flex;">조회수&nbsp;&nbsp;:&nbsp;&nbsp;
+					<div class="readcount" th:text="${d.readCount}">readCount</div>
+				</div>
+			</div>
+			<div class="contentarea">
+				<div th:text="${d.content}"></div>
+			</div>
+		</section>
+		<div class="btnarea">
+			<button type="submit" class="editbtn" onclick="editmodal()">수정</button>
+			<button type="submit" class="deletebtn" onclick="deleteModal()">삭제</button>
+		</div>
+		<section>
+			<div id="editModal" class="editmodal">
+				<div class="modal-content">
+					<div class="modaltitlearea">
+						<h2>게시글 수정하기</h2>
+						<span class="close" onclick="closeModal()">&times;</span>
+					</div>
+					<div class="type">
+						<b>스포일러 유/무 :&nbsp;</b>
+						<input type="radio" id="modalTypeInput" name="modalTypeInput" value="False">&nbsp;스포일러有
+						<input type="radio" id="modalTypeInput" name="modalTypeInput" value="true">&nbsp;스포일러無<br>
+					</div>
+					<label for="modalTitleInput">제목</label>
+					<input type="text" id="modalTitleInput" name="modalTitleInput">
+					<label for="writerInput">작성자</label>
+					<input type="text" id="writerInput" name="writerInput" readonly>
+					<label for="modalContentInput">내용</label>
+					<textarea id="modalContentInput" name="modalContentInput"></textarea><br>
+					<div class="btnarea">
+						<button type="button" id="saveChangesBtn" onclick="saveChanges()">수정하기</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

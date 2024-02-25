@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/movieintro/movieintro.css">
+	<script type="text/javascript" src="/js/movieintro/movieintro.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+	<main>
+		<section>
+			<h2 style="margin-top: 20px;">영화 소개 게시판</h2>
+			<div>일간 박스오피스</div>
+			<div id="daily"></div>
+		</section>
+		<section>
+			<div class="titlearea">
+				<div class="spoilerarea">스포</div>
+				<div class="titlearea2">제목</div>
+				<div class="writerarea">작성자</div>
+				<div class="readcountarea">조회수</div>
+				<div class="createdarea">등록일</div>
+			</div>
+		</section>
+		<section>
+			<div th:each="movie:${page.dtoList}">
+				<a class="contentarea" th:href="@{'/movieintro-detail/' + ${movie.no}}">
+					<div class="spoiler" th:id="'spoiler_' + ${movie.type}" th:text="${movie.type} ?  스포일러無 : 스포일러有">
+					</div>
+					<div class="title" th:text="${movie.title}">title</div>
+					<div class="writer" th:text="${movie.writer}">writer</div>
+					<div class="readcount" th:text="${movie.readCount}">readCount</div>
+					<div class="created" th:text="${#temporals.format(movie.createdAt, 'yyyy.MM.dd')}">2024-02-24</div>
+				</a>
+			</div>
+		</section>
+		<div class="pagearea">
+			<th:block th:each="page:${page.pageList}">
+				<li>
+					<div class="pageNum"
+						th:class="${#strings.equals(param.page, page) ? 'highlighted' : ''} + ${param.page == null && page == 1? 'highlighted' : ''}">
+						<a th:href="@{/notice(page=${page})}">
+							<p th:text="${page}"></p>
+						</a>
+					</div>
+				</li>
+				<span></span>
+			</th:block>
+		</div>
+		<a href="/movieintro-add">글쓰기</a>
+	</main>
+</body>
+
+</html>

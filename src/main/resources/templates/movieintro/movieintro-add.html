@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/movieintro/add-board.css">
+	<script type="text/javascript" src="/js/movieintro/movieintro.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+	<main>
+		<h2 style="margin-top: 20px;">영화 소개 게시판 작성</h2>
+		<section>
+			<form action="/movieintro-add" method="post">
+				<table>
+					<tr>
+						<th>제목</th>
+						<td>
+							<input type="text" name="title" class="text">
+						</td>
+					</tr>
+					<tr>
+						<th>스포일러</th>
+						<td>
+							<input type="radio" name="type" value="1"> 스포일러無
+							<input type="radio" name="type" value="0"> 스포일러有
+						</td>
+					</tr>
+					<tr>
+						<th>작성자</th>
+						<td>
+							<input type="text" name="writer" class="text">
+						</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td>
+							<input type="text" value="" name="content" class="content">
+						</td>
+					</tr>
+				</table>
+				<div class="btnarea">
+					<button type="submit" class="btn">등록하기</button>
+				</div>
+			</form>
+		</section>
+	</main>
+</body>
+
+</html>
