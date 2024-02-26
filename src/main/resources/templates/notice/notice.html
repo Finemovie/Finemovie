@@ -10,8 +10,6 @@
 			<thead>
 				<tr>
 					<th style="width: 160px">제목</th>
-					<th style="width: 380px">내용</th>
-					<th style="width: 210px">작성자</th>
 					<th style="width: 180px">작성일</th>
 					<th style="width: 20px"></th>
 					<!-- 수정된 부분 -->
@@ -19,11 +17,10 @@
 			</thead>
 			<tbody id="dynamic_table">
 				<tr th:each="notice, rowStat : ${noticeList}">
-					<td style="width: 160px" th:text="${notice.title}"></td>
-					<td style="width: 380px"><a
+					<td style="width: 160px"><a
 						th:href="|/noticeedit/${notice.id}|"
 						style="display: block; width: 100%; height: 100%;"> <span
-							th:utext="${notice.content}"></span>
+							th:utext="${notice.title}"></span>
 					</a></td>
 					<td style="width: 180px"
 						th:text="${#temporals.format(notice.createdAt, 'yyyy.MM.dd')}"></td>

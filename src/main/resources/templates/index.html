@@ -8,10 +8,19 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/movieintro/movieintro.js">
+	
+</script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 </head>
 
 <body>
 	<main>
+		<section>
+			<h2 style="margin-top: 20px;">일간 박스오피스</h2>
+			<div class="today" id="daily"></div>
+		</section>
 		<section id="slider1" class="slider">
 			<div class="box">
 				<img src="/img/index/banner.png" width="1200px" height="200px">
@@ -19,7 +28,8 @@
 		</section>
 		<div class="board">
 			<div class="row mb-4">
-				<div class="col-md-5 mx-auto mb-4"> <!-- 수정된 부분 -->
+				<div class="col-md-5 mx-auto mb-4">
+					<!-- 수정된 부분 -->
 					<div class="int aa d-flex justify-content-between">
 						<div>
 							<span>영화 소개</span>
@@ -30,7 +40,8 @@
 					</div>
 					<hr>
 				</div>
-				<div class="col-md-5 mx-auto mb-4"> <!-- 수정된 부분 -->
+				<div class="col-md-5 mx-auto mb-4">
+					<!-- 수정된 부분 -->
 					<div class="review aa d-flex justify-content-between">
 						<div>
 							<span>영화 리뷰</span>
@@ -43,7 +54,8 @@
 				</div>
 			</div>
 			<div class="row mb-4">
-				<div class="col-md-5 mx-auto mb-4"> <!-- 수정된 부분 -->
+				<div class="col-md-5 mx-auto mb-4">
+					<!-- 수정된 부분 -->
 					<div class="community aa d-flex justify-content-between">
 						<div>
 							<span>자유게시판</span>
@@ -54,7 +66,8 @@
 					</div>
 					<hr>
 				</div>
-				<div class="col-md-5 mx-auto mb-4"> <!-- 수정된 부분 -->
+				<div class="col-md-5 mx-auto mb-4">
+					<!-- 수정된 부분 -->
 					<div class="info aa d-flex justify-content-between">
 						<div>
 							<span>공지사항</span>
@@ -64,6 +77,23 @@
 						</div>
 					</div>
 					<hr>
+					<div class="col-md-5 mx-auto">
+						<div style="display: flex; flex-direction: column">
+							<div th:each="notice, rowStat : ${noticeList}"
+								style="display: flex; justify-content: space-between;">
+								<div>
+									<a th:href="|/noticeedit/${notice.id}|"> <span
+										th:utext="${notice.title}"></span>
+									</a>
+								</div>
+								<div
+									th:text="${#temporals.format(notice.createdAt, 'yyyy.MM.dd')}"></div>
+								<div th:if="${!rowStat.last}">
+									<div class="horizontal-line"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
