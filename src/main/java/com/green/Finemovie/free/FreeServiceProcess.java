@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.green.Finemovie.domain.entity.notice.NoticeEntity;
 import com.green.Finemovie.free.comment.CommentEntityRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -127,4 +128,5 @@ public class FreeServiceProcess implements FreeService {
 	    // 엔터티를 레포지토리에 저장
 	    freeEntityRepository.save(existingFree);
 	}
+
 }

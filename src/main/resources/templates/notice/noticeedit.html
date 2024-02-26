@@ -3,6 +3,7 @@
 	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/summerNote/summernote-lite.js"></script>
 <script src="/summerNote/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="/summerNote/summernote-lite.css">
@@ -68,9 +69,11 @@
 				<div style="width: 160px">제목</div>
 				<div id="title" style="width: 160px" th:text="${detail.title}"></div>
 				<div style="width: 380px">내용</div>
-				<div id="content" style="width: 380px" th:utext=="${detail.content}"></div>
+				<div id="content" style="width: 380px" th:utext="${detail.content}"></div>
 				<div>
 					<button class="button01" type="button" onclick="btnUpdateClicked()">수정</button>
+					<button class="button01" type="button" onclick="btnDeleteClicked()">삭제</button>
+					<button type="button" onclick="history.back()">목록</button>
 				</div>
 			</div>
 		</div>
@@ -89,6 +92,28 @@
 				// 값을 수정하는 폼에 설정
 				document.getElementById("update-title").value = title;
 				document.getElementById("update-content").value = content;
+			}
+
+			function btnDeleteClicked() {
+				if (confirm('정말로 삭제하시겠습니까?')) {
+					const noticeId = $("#noticeId").data("notice-id");
+
+					$.ajax({
+						type: 'DELETE',
+						url: '/deleteNotice',
+						data: { no: noticeId },
+						success: function(response) {
+							alert('삭제되었습니다.');
+							window.location.href = '/notice';
+						},
+						error: function(error) {
+							console.error('삭제 중 에러 발생:', error);
+							alert('삭제 중 에러가 발생했습니다. 다시 시도해주세요.');
+						}
+					});
+				} else {
+					// 사용자가 취소를 선택한 경우의 로직
+				}
 			}
 		</script>
 		<form th:action="|/noticeedit/${noticeEditDTO.no}|" method="post"

@@ -18,4 +18,6 @@ public interface NoticeService {
     void noticeedit(Long no, Model model);
     
     void updateProcess(Long no, NoticeUpdateDTO dto);
+
+	void deleteNotice(long no);
 }

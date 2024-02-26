@@ -34,6 +34,8 @@ public class NoticeEntity {
     private String title;
     private String content;
     
+    
+    
     @CreationTimestamp
     @Column(columnDefinition = "timestamp(6) null")
     private LocalDateTime createdAt;
