@@ -153,3 +153,9 @@ input[type="radio"]:checked ~ .imgs {
     object-fit: cover; /* Cover the box without losing the aspect ratio */
     display: block; /* Remove any default margin/padding */
 }
+
+
+.btn-page{
+	
+	text-decoration: none;
+}
