@@ -51,6 +51,23 @@
 						</div>
 					</div>
 					<hr>
+					<div class="col-md-5 mx-auto">
+						<div style="display: flex; flex-direction: column">
+							<div th:each="board, rowStat : ${boardList}"
+								style="display: flex; justify-content: space-between;">
+								<div>
+									<a th:href="|/reviewBoard/${board.no}|"> <span
+										th:utext="${board.title}"></span>
+									</a>
+								</div>
+								<div
+									th:text="${#temporals.format(board.createdAt, 'yyyy.MM.dd')}"></div>
+								<div th:if="${!rowStat.last}">
+									<div class="horizontal-line"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row mb-4">

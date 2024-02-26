@@ -84,6 +84,8 @@ public class ReviewProcess implements ReviewService {
 		
 		return "/review/reviewWrite";
 	}
+	
+	
 
 	@Override
 	public void addReview(HomeReviewDTO homeReviewDTO) {
