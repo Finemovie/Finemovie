@@ -3,6 +3,21 @@
 	th:replace="~{layout/my-layout :: layout(~{this::head},~{this::main})}">
 <head>
 <meta charset="UTF-8">
+<style>
+join_button {
+	text-align: right; /* Align the button to the right */
+	margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+button {
+	padding: 7px 13px;
+	font-size: 16px;
+	background-color: #000; /* Black background for the button */
+	color: #fff; /* White text color */
+	border: none;
+	cursor: pointer;
+}
+</style>
 <script src="/summerNote/summernote-lite.js"></script>
 <script src="/summerNote/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="/summerNote/summernote-lite.css">
@@ -65,22 +80,22 @@
 	<main>
 		<form action="/addnotice/register" method="post">
 			<!-- 폼태그 시작 -->
-			<div class="join_area">
-				<h1 class="join_tilte">게시글 등록</h1>
-				<div>
-					<!-- name 속성 추가 -->
-					<label for="title">제목</label><input type="text" maxlength="30"
-						name="title">
-				</div>
-				<div>
-					<label for="content"></label>
-					<textarea id="summernote" type="hidden" name="content" th:value="${content}"></textarea>
-				</div>
-				<div class="button_area">
-					<button class="join_button">
-						<span>등록하기</span>
-					</button>
-				</div>
+			<section>
+
+				<h2 style="margin-top: 20px;">공지사항</h2>
+			</section>
+			<!-- name 속성 추가 -->
+			<label for="title">제목</label><input type="text" maxlength="30"
+				name="title">
+			<div>
+				<label for="content"></label>
+				<textarea id="summernote" type="hidden" name="content"
+					th:value="${content}"></textarea>
+			</div>
+			<div class="button_area">
+				<button class="join_button">
+					<span>등록하기</span>
+				</button>
 			</div>
 		</form>
 	</main>
