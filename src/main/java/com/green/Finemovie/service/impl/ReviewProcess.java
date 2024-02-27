@@ -1,5 +1,6 @@
 package com.green.Finemovie.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
@@ -65,6 +66,17 @@ public class ReviewProcess implements ReviewService {
 	}
 
 	@Override
+	public List<ReviewDTO> listProcessIndex() {
+	    
+
+
+	    return reviewMapper.findAlll();
+	}
+
+	
+	
+	
+	@Override
 	public String getReview(Authentication auth, Model model) {
 		
 		long memberId = AuthenUtils.extractMemberNo(auth);
@@ -109,6 +121,8 @@ public class ReviewProcess implements ReviewService {
 		
 		return "redirect:/reviewBoard";
 	}
+
+	
 	
 	
 	

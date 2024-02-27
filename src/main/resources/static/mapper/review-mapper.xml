@@ -37,6 +37,9 @@
     <result property="grade" column="grade"/>
 	</resultMap>
 
+	<select id="findAlll" resultMap="ReviewResultMap">
+        SELECT * FROM review ORDER BY created_at DESC LIMIT 10
+    </select>
 	
   
 </mapper>

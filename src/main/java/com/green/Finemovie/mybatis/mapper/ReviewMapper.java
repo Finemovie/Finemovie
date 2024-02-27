@@ -31,5 +31,8 @@ public interface ReviewMapper {
     List<HomeReviewDTO> findAllReviews();
 
 	ReviewWriteDTO findNameById(long memberId);
+	
+	List<ReviewDTO> findAlll();
+
 
 }

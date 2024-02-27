@@ -28,15 +28,21 @@ public class IndexController {
 	private ReviewService reviewService;
 
 	@GetMapping("/")
-	public String noticelist(Authentication auth,Model model,
-			 @RequestParam(name = "page", defaultValue = "1") int page,
-			 @RequestParam(name = "search", required = false) String search) {
-		List<NoticeListDTO> noticeList = noticeService.getnoticeList();
-		model.addAttribute("noticeList", noticeList); // 변경된 부분
-		
-		
-		return "index";
+	public String noticelist(Authentication auth, Model model
+	                         ) {
+	    List<NoticeListDTO> noticeList = noticeService.getnoticeList();
+	    model.addAttribute("noticeList", noticeList);
+
+	    List<ReviewDTO> boardList = reviewService.listProcessIndex();
+	    model.addAttribute("boardList", boardList);
+
+	    // 페이지네이션 정보와 검색 결과의 존재 여부 등 추가 정보를 모델에 추가
+	    // 예: model.addAttribute("pageData", pageData);
+	    // 예: model.addAttribute("hasResults", hasResults);
+
+	    return "index";
 	}
+
 	
 	
 
