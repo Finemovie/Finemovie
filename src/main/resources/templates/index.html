@@ -8,13 +8,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
-<script type="text/javascript" src="/js/movieintro/movieintro.js">
-	
-</script>
+<script type="text/javascript" src="/js/movieintro/movieintro.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
 </head>
-
 <body>
 	<main>
 		<section>
@@ -26,87 +22,56 @@
 				<img src="/img/index/banner.png" width="1200px" height="200px">
 			</div>
 		</section>
-		<div class="board">
-			<div class="row mb-4">
-				<div class="col-md-5 mx-auto mb-4">
-					<!-- 수정된 부분 -->
-					<div class="int aa d-flex justify-content-between">
-						<div>
-							<span>영화 소개</span>
-						</div>
-						<div>
-							<a class="link" href="/movieintro">+자세히 보기</a>
-						</div>
+		<div class="row">
+			<!-- 영화 리뷰 섹션 -->
+			<div class="col-md-6 mb-4">
+				<div class="review aa d-flex justify-content-between">
+					<div>
+						<span>영화 리뷰</span>
 					</div>
-					<hr>
+					<div>
+						<a class="link" href="reviewHome">+자세히 보기</a>
+					</div>
 				</div>
-				<div class="col-md-5 mx-auto mb-4">
-					<!-- 수정된 부분 -->
-					<div class="review aa d-flex justify-content-between">
-						<div>
-							<span>영화 리뷰</span>
-						</div>
-						<div>
-							<a class="link" href="reviewHome">+자세히 보기</a>
-						</div>
-					</div>
-					<hr>
-					<div class="col-md-5 mx-auto">
-						<div style="display: flex; flex-direction: column">
-							<div th:each="board : ${boardList}"
-								style="display: flex; justify-content: space-between;">
-								<div>
-									<a th:href="@{/reviewBoard/{no}(no=${board.no})}"> <span
-										 th:text="${board.title}"></span>
-									</a>
-								</div>
-								<div
-									 th:text="${#temporals.format(board.createdAt, 'yyyy.MM.dd')}"></div>
-								
+				<hr>
+				<div class="col-md-12">
+					<div style="display: flex; flex-direction: column">
+						<div th:each="board : ${boardList}"
+							style="display: flex; justify-content: space-between;">
+							<div>
+								<a th:href="@{/reviewBoard/{no}(no=${board.no})}"> <span
+									th:text="${board.title}"></span>
+								</a>
 							</div>
+							<div
+								th:text="${#temporals.format(board.createdAt, 'yyyy.MM.dd')}"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row mb-4">
-				<div class="col-md-5 mx-auto mb-4">
-					<!-- 수정된 부분 -->
-					<div class="community aa d-flex justify-content-between">
-						<div>
-							<span>자유게시판</span>
-						</div>
-						<div>
-							<a class="link" href="freeList">+자세히 보기</a>
-						</div>
+
+			<!-- 공지사항 섹션 -->
+			<div class="col-md-6 mb-4">
+				<div class="info aa d-flex justify-content-between">
+					<div>
+						<span>공지사항</span>
 					</div>
-					<hr>
+					<div>
+						<a class="link" href="/notice">+자세히 보기</a>
+					</div>
 				</div>
-				<div class="col-md-5 mx-auto mb-4">
-					<!-- 수정된 부분 -->
-					<div class="info aa d-flex justify-content-between">
-						<div>
-							<span>공지사항</span>
-						</div>
-						<div>
-							<a class="link" href="/notice">+자세히 보기</a>
-						</div>
-					</div>
-					<hr>
-					<div class="col-md-5 mx-auto">
-						<div style="display: flex; flex-direction: column">
-							<div th:each="notice, rowStat : ${noticeList}"
-								style="display: flex; justify-content: space-between;">
-								<div>
-									<a th:href="|/noticeedit/${notice.id}|"> <span
-										th:utext="${notice.title}"></span>
-									</a>
-								</div>
-								<div
-									th:text="${#temporals.format(notice.createdAt, 'yyyy.MM.dd')}"></div>
-								<div th:if="${!rowStat.last}">
-									<div class="horizontal-line"></div>
-								</div>
+				<hr>
+				<div class="col-md-12">
+					<div style="display: flex; flex-direction: column">
+						<div th:each="notice, rowStat : ${noticeList}"
+							style="display: flex; justify-content: space-between;">
+							<div>
+								<a th:href="|/noticeedit/${notice.id}|"> <span
+									th:utext="${notice.title}"></span>
+								</a>
 							</div>
+							<div
+								th:text="${#temporals.format(notice.createdAt, 'yyyy.MM.dd')}"></div>
 						</div>
 					</div>
 				</div>
@@ -114,5 +79,4 @@
 		</div>
 	</main>
 </body>
-
 </html>
